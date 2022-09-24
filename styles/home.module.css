@@ -1,0 +1,49 @@
+.homePage {
+  width: 100%;
+  background-color: white;
+}
+
+.homePage header {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homePage input {
+  width: 90%;
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid #dddddd;
+  background-color: white;
+  text-align: center;
+  font-weight: 600;
+  outline: none;
+  color: black;
+}
+
+.homePage input::placeholder {
+  color: #b3b3b3;
+}
+
+.homePage header img {
+  width: 25px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+ .main {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  margin-bottom: 100px;
+  padding-bottom: 30px;
+}
