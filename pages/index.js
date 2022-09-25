@@ -1,15 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/home.module.css";
+import styles from "../styles/start.module.css";
+import { ClapSpinner } from "react-spinners-kit";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Smoon</title>
-        <meta name="description" content="Find me" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <img src="/logo.png" alt="" />
+        <ClapSpinner size={25} frontColor={"white"} />
     </div>
   );
 }
