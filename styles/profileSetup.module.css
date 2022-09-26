@@ -1,0 +1,121 @@
+.profileSetup {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileSetup header {
+  height: 60px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: #f62355;
+  margin-bottom: 25px;
+}
+
+.profileSetup header img {
+  width: 30px;
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  position: relative;
+  border-radius: 50%;
+  margin-bottom: 50px;
+}
+
+.image img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.image img:nth-of-type(2) {
+  background-color: #b8b8b9;
+  border-radius: 50%;
+  position: absolute;
+  width: 35px;
+  bottom: 0;
+  right: 20px;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  height: 60px;
+  width: 90%;
+  border: 1px solid #7a7a7a;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.inputGroup input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  font-weight: 600;
+  color: #7a7a7a;
+  bottom: -15px;
+  background-color: transparent;
+}
+
+.inputGroup .name {
+  position: absolute;
+  left: 0;
+  top: 25%;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.8s;
+  text-transform: capitalize;
+}
+
+.inputGroup input:focus + .label .name,
+.inputGroup input:valid + .label .name {
+  color: #f62355;
+  font-size: 18px;
+  font-weight: 700;
+  transform: translateY(-100%);
+}
+
+.gender {
+  width: 90%;
+  height: 60px;
+  border: 0;
+  border-bottom: 1px solid #7a7a7a;
+  font-weight: 600;
+  max-width: 700px;
+  background-color: white;
+  color: #7a7a7a;
+  display: flex;
+  outline: none;
+  font-size: 15px;
+}
+
+.gender input {
+  width: 100%;
+}
+
+.gender option {
+  background-color: #f62355;
+  padding: 30px 0;
+  color: white;
+  font-size: 18px;
+}

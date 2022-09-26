@@ -1,7 +1,14 @@
 import Layout from "../components/Layout";
 import style from "../styles/profile.module.css";
+import {useRouter} from "next/router";
+import { useEffect } from "react";
 
 function profile() {
+  const  asPath = useRouter();
+
+  useEffect(() => {
+    console.log(asPath);
+  }, []);
   return (
     <Layout>
       <div className={style.profile}>
