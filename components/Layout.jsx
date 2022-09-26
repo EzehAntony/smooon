@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 import Head from "next/head";
-import Home from "../pages/index";
+
 
 function Layout({ children }) {
   return (

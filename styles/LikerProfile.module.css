@@ -1,0 +1,136 @@
+.likerProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 10px;
+  margin-bottom: 50px;
+  
+}
+
+.userImg {
+  width: 100%;
+  background-color: black;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  max-width: 800px;
+  z-index: 1;
+}
+
+.userImg img {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  z-index: 1;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info {
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  margin: 20px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info h4 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.info p {
+  color: #acacac;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.info img {
+    position: absolute;
+    right: 20px;
+    width: 40px;
+}
+
+.education {
+  margin-top: 15px;
+}
+
+.event,
+.education {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #acacac;
+  text-transform: capitalize;
+}
+
+.event img,
+.education img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.event {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.event::after {
+  content: "";
+  height: 4px;
+  background-color: #f62355;
+  width: 40%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 20px;
+  max-width: 200px;
+}
+
+.bio {
+  width: 90%;
+  max-width: 700px;
+  font-size: 13px;
+  color: #acacac;
+  font-weight: 600;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio span {
+  color: black;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.gender {
+  width: 90%;
+  max-width: 700px;
+  font-size: 13px;
+  color: #acacac;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #acacac;
+  border-left: 0;
+  border-right: 0;
+  padding: 20px 0;
+  margin: 20px 0 0 0;
+}
+
+.gender span {
+  color: #f62355;
+  margin: 0 20px 0 0;
+  font-weight: 800;
+}
