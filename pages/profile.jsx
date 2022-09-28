@@ -1,14 +1,8 @@
 import Layout from "../components/Layout";
 import style from "../styles/profile.module.css";
-import {useRouter} from "next/router";
-import { useEffect } from "react";
 
-function profile() {
-  const  asPath = useRouter();
 
-  useEffect(() => {
-    console.log(asPath);
-  }, []);
+function Profile() {
   return (
     <Layout>
       <div className={style.profile}>
@@ -61,4 +55,4 @@ function profile() {
   );
 }
 
-export default profile;
+export default Profile;

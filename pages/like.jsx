@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import LikerProfile from "../components/LikerProfile";
 
-function like() {
+function Like() {
   return (
     <Layout>
       <div>
@@ -13,4 +13,4 @@ function like() {
   );
 }
 
-export default like;
+export default Like;

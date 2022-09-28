@@ -1,7 +1,7 @@
-function start() {
+function Start() {
   return (
-    <div>start</div>
+    <div>Start</div>
   )
 }
 
-export default start
+export default Start

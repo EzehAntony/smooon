@@ -1,7 +1,7 @@
 import style from "../styles/profileSetup.module.css";
 import { useRouter } from "next/router";
 
-function profilesetup() {
+function Profilesetup() {
   const router = useRouter();
   return (
     <div className={style.profileSetup}>
@@ -52,4 +52,4 @@ function profilesetup() {
   );
 }
 
-export default profilesetup;
+export default Profilesetup;

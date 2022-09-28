@@ -13,7 +13,7 @@ export default function Home() {
   }, []);
   return (
     <div className={styles.container}>
-      <img src="/logo.png" alt="" />
+      <Image src="/logo.png" width={150} height={60} alt="" />
       <ClapSpinner size={25} frontColor={"white"} />
     </div>
   );
