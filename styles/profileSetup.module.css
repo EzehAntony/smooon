@@ -14,11 +14,14 @@
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.profileSetup > p {
   font-size: 20px;
   font-weight: 700;
   text-transform: capitalize;
   color: #f62355;
-  margin-bottom: 25px;
+  margin: 0 0 20px 0;
 }
 
 .profileSetup header img {
@@ -97,25 +100,44 @@
 
 .gender {
   width: 90%;
-  height: 60px;
   border: 0;
-  border-bottom: 1px solid #7a7a7a;
-  font-weight: 600;
   max-width: 700px;
-  background-color: white;
-  color: #7a7a7a;
   display: flex;
-  outline: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gender h1 {
+  font-size: 15px;
+  align-self: flex-start;
+}
+
+.gender main {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+
+.gender main p {
+  font-weight: 500;
   font-size: 15px;
 }
 
-.gender input {
-  width: 100%;
+.gender div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
 }
 
-.gender option {
-  background-color: #f62355;
-  padding: 30px 0;
-  color: white;
-  font-size: 18px;
+.gender input {
+  width: 20px;
+  height: 20px;
+}
+
+.gender input {
+  accent-color: #f62355;
 }

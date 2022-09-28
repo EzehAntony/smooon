@@ -13,8 +13,9 @@ function profilesetup() {
           src="/back.svg"
           alt=""
         />
-        <p>profile setup</p>
       </header>
+
+      <p>profile setup</p>
 
       <div className={style.image}>
         <img src="/henessy.jpg" alt="" />
@@ -35,11 +36,18 @@ function profilesetup() {
         </label>
       </div>
 
-      <select className={style.gender}>
-        <option value="0">Gender</option>
-        <option value="1">Male</option>
-        <option value="2">Female</option>
-      </select>
+      <div className={style.gender}>
+        <h1>Gender</h1>
+        <main>
+          <div>
+            <p>Female</p>
+            <input type="radio" value={"Hello"} name="gender" required />
+          </div>
+          <div>
+            <p>Male</p> <input type="radio" name="gender" required />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
