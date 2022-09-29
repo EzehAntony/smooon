@@ -47,6 +47,8 @@ function Profilesetup() {
             <p>Male</p> <input type="radio" name="gender" required />
           </div>
         </main>
+
+        <button className={style.continue}>Continue</button>
       </div>
     </div>
   );

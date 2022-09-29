@@ -1,8 +1,9 @@
 import Layout from "../components/Layout";
 import style from "../styles/profile.module.css";
-
+import { useRouter } from "next/router";
 
 function Profile() {
+  const router = useRouter();
   return (
     <Layout>
       <div className={style.profile}>
@@ -15,7 +16,11 @@ function Profile() {
             <img src="/settings.svg" alt="" />
           </div>
 
-          <button>
+          <button
+            onClick={() => {
+              router.push("/profilesetup");
+            }}
+          >
             <img src="/edit.svg" alt="" />
             <p>edit info</p>
           </button>
