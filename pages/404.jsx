@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import style from "../styles/error.module.css";
 import { useRouter } from "next/router";
 
-function error() {
+function Error() {
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
-       router.push("/home")
+      router.push("/home");
     }, 3000);
   }, []);
   return (
@@ -20,4 +20,4 @@ function error() {
   );
 }
 
-export default error;
+export default Error;
