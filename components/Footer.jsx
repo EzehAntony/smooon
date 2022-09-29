@@ -6,29 +6,39 @@ function Footer() {
   return (
     <div className={style.footer}>
       <Link href={"/notification"}>
-        <Image src="/notification.svg" width={30} height={30} alt="" />
+        <a>
+          <Image src="/notification.svg" width={30} height={30} alt="" />
+        </a>
       </Link>
 
       <Link href={"/like"}>
-        <Image src="/heart.svg" width={30} height={30} alt="" />
+        <a>
+          <Image src="/heart.svg" width={30} height={30} alt="" />
+        </a>
       </Link>
 
       <Link href={"/home"}>
-        <Image
-          src="/fire.svg"
-          className={style.fire}
-          width={45}
-          height={45}
-          alt=""
-        />
+        <a>
+          <Image
+            src="/fire.svg"
+            className={style.fire}
+            width={45}
+            height={45}
+            alt=""
+          />
+        </a>
       </Link>
 
       <Link href={"/message"}>
-        <Image src="/message.svg" width={30} height={30} alt="" />
+        <a>
+          <Image src="/message.svg" width={30} height={30} alt="" />
+        </a>
       </Link>
 
       <Link href={"/profile"}>
-        <Image src="/profile.svg" width={30} height={30} alt="" />
+        <a>
+          <Image src="/profile.svg" width={30} height={30} alt="" />
+        </a>
       </Link>
     </div>
   );
