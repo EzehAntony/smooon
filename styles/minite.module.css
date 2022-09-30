@@ -1,0 +1,99 @@
+.minite {
+  min-height: 101vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow-x: hidden;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.minite h1 {
+  color: #f62355;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.minite h1 span {
+  color: #747474;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.circle_1 {
+  border: 2px solid #f62355;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.circle_2 {
+  border: 2px solid #f623548a;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: grow 2s infinite alternate;
+}
+.circle_3 {
+  border: 2px solid #f623542a;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  animation: grow 2s infinite alternate;
+}
+
+@keyframes grow {
+  from {
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.circle_1 img {
+  width: 100px;
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+  border: 2px solid #f62355;
+
+}
+
+.userImg {
+  top: 0;
+  right: 0;
+  animation: imgGrow 2s infinite alternate;
+}
+
+.miniteImg {
+  bottom: 0;
+  left: 0;
+  animation: imgGrow 1.6s infinite alternate;
+}
+
+@keyframes imgGrow {
+  from {
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.skip p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #747474;
+  font-weight: 500;
+  font-size: 15px;
+  text-transform: capitalize;
+}

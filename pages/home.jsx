@@ -6,16 +6,18 @@ import Image from "next/image";
 
 function Home() {
   const data = [
-    { name: "Avinci Morgan", state: "Oklahoma", age: 24 },
+    { name: "Avinci Morgan", state: "Oklahoma", age: 24, id: 1 },
     {
       name: "Chris Yager",
       state: "Lagos",
       age: 42,
+      id: 2,
     },
-    { name: "Avinci Eren", state: "San Fransisco", age: 30 },
-    { name: "Mariana Santos", state: "Peru", age: 22 },
-    { name: "Jennifer Mage", state: "Manchester", age: 30 },
+    { name: "Avinci Eren", state: "San Fransisco", age: 30, id: 3 },
+    { name: "Mariana Santos", state: "Peru", age: 22, id: 4 },
+    { name: "Jennifer Mage", state: "Manchester", age: 30, id: 5 },
   ];
+
   return (
     <Layout>
       <div className={style.homePage}>
@@ -24,11 +26,12 @@ function Home() {
           <Image width={25} height={25} src="/filter.svg" alt="" />
         </header>
 
-        {/* Main div that holds the cards */}
+        {/* div that holds the cards */}
         <div className={style.main}>
           {data.reverse().map((d, k) => (
             <Card
               key={k}
+              id={d.id}
               name={d.name}
               state={d.state}
               age={d.age}

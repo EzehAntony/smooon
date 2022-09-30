@@ -11,9 +11,9 @@ function Footer() {
 
   return (
     <div className={style.footer}>
-      <Link href={"/notification"}>
+      <Link href={"/minite"}>
         <div>
-        <Image src={router.pathname === "/notification" ? "/notification_active.svg":"/notification.svg"} width={30} height={30} alt="" />
+        <Image src={router.pathname === "/minite" ? "/notification_active.svg":"/notification.svg"} width={30} height={30} alt="" />
         </div>
       </Link>
 

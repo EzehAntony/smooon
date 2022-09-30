@@ -1,5 +1,5 @@
 .container {
-  background-color: #f62355;
+  background-color: white;
   color: white;
   width: 100%;
   height: 100vh;
@@ -10,3 +10,16 @@
   flex-direction: column;
 }
 
+.container img {
+  width: 150px;
+  animation: rabbit 1s infinite alternate;
+}
+
+@keyframes rabbit {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
