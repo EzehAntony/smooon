@@ -16,6 +16,7 @@ function Home() {
     { name: "Avinci Eren", state: "San Fransisco", age: 30, id: 3 },
     { name: "Mariana Santos", state: "Peru", age: 22, id: 4 },
     { name: "Jennifer Mage", state: "Manchester", age: 30, id: 5 },
+    { name: "Moses Nwigberi", state: "Ebonyi", age: 23, id: 6 },
   ];
 
   return (
