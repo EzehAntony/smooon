@@ -1,33 +1,30 @@
-import styles from '../../styles/login.module.css'
+import styles from "../../styles/signup.module.css";
 
 const signup = () => {
   return (
     <div className={styles.main}>
-    <div className={styles.loginModal}>
-        <h2>Sign up for an Account</h2>
-        <h3>Hello, enter your details let's get you signed up on Smooon</h3>
-        <form onSubmit={e => handleSubmit(e)}>
-            
-            <input type="text" placeholder='First Name'/>
-            <input type="text" placeholder='Last Name'/>
-            <input type="text" placeholder='User Name'/>
+      <img src="/logo.png" alt="" className={styles.logo} />
 
-            <label htmlFor="">Password</label>
-            <input type="password" name="" placeholder='********' />
-
-            <label htmlFor="">Confirm Password</label>
-            <input type="password" name="" placeholder='********' />
-            <input type="text" placeholder='Enter your location'/>
-            <button className={styles.submitBtn} type="submit">
-                Sign up
-            </button>
+      <div className={styles.loginModal}>
+        <h2>Sign up</h2>
+        <h3>Hi there! Create an acoount to see other smoooners!</h3>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <input type="text" placeholder="Firstname" />
+          <input type="text" placeholder="Lastname" />
+          <input type="text" placeholder="Username" />
+          <input type="text" placeholder="State" />
+          <input type="text" placeholder="gender M/F" />
+          <input type="date" placeholder="DD/MM/YY" />
+          <input type="password" name="" placeholder="Password" />
+          <input type="password" name="" placeholder="Confirm password" />
+          <button className={styles.submitBtn} type="submit">
+            Sign up
+          </button>
         </form>
-        <div className={styles.otherOptions}>
-                - Or Sign in with -
-        </div>
+      </div>
+      <img src="/womanWithAHeart.svg" className={styles.woman} alt="" />
     </div>
-</div>
-  )
-}
+  );
+};
 
-export default signup
+export default signup;

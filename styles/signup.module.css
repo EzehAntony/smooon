@@ -57,13 +57,18 @@
 }
 
 .loginModal form input {
-  width: 100%;
-  margin: 10px 0px;
+  width: 45%;
   height: 40px;
+  margin: 5px;
   border: none;
-  padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #00000033;
   border-radius: 8px;
+  padding: 10px;
+  outline-color: #F62355;
+}
+
+.loginModal form input::placeholder {
+    text-transform: capitalize;
 }
 .submitBtn {
   width: 100%;
