@@ -1,4 +1,5 @@
 import styles from "../../styles/signup.module.css";
+import Snowfall from "react-snowfall";
 
 const signup = () => {
   return (
@@ -23,6 +24,8 @@ const signup = () => {
         </form>
       </div>
       <img src="/womanWithAHeart.svg" className={styles.woman} alt="" />
+
+      <Snowfall color="#F62355" />
     </div>
   );
 };

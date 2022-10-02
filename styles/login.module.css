@@ -11,6 +11,7 @@
   left: 20px;
   top: 20px;
   width: 40px;
+  z-index: 1;
 }
 
 .loginModal {
