@@ -9,7 +9,8 @@ function Error() {
     setTimeout(() => {
       router.push("/home");
     }, 3000);
-  }, []);
+  }, [router]);
+  
   return (
     <div className={style.error}>
       <div className={style.alert}>

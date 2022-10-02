@@ -1,87 +1,85 @@
 .main {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 40px;
+}
+
 .loginModal {
-    width: 90%;
-    max-width: 600px;
-    margin:30px auto;
-    box-shadow: 5px 9px 20px 0 rgba(0,0,0,0.2);
-    padding:40px 30px;
-    border-radius: 15px;
+  z-index: 1;
+  position: relative;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  box-shadow: 5px 9px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 400px;
+  min-height: 500px;
+  background-color: #ffffffd8;
 }
-.loginModal h2, .loginModal h3 {
-    text-align: center;
+
+.loginModal h2 {
+  color: #f62355;
+  font-size: 35px;
+  text-align: center;
 }
+
 .loginModal h3 {
-    font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 30px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 20px 10% 30px 10%;
+  font-weight: 600;
 }
 .loginModal form {
-    width: 100%;
-    height: auto;
-    
+  width: 100%;
+  height: auto;
 }
 .loginModal form button {
-    background: none;
-    color: black;
-    border: none;
-    font-weight: bold;
-    margin: 10px 0;
+  background: none;
+  border: none;
+  color: black;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 10px 0;
 }
 
 .loginModal form input {
-    width: 100%;
-    margin: 10px 0px;
-    height: 40px;
-    border:none;
-    padding: 20px;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 8px;
+  width: 100%;
+  margin: 10px 0px;
+  height: 40px;
+  border: none;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 .submitBtn {
-    width: 100%;
-    background-color: #f4be69 !important;
-    height: 35px;
-    border-radius: 8px;
+  width: 100%;
+  background-color: #f62355 !important;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.otherOptions {
-    margin:auto;
-    width: 100%;
-    margin-top: 20px;
-    text-align: center;
 
+.woman {
+  width: 30%;
+  margin-left: 20px;
 }
-.otherOptions > div {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 10px;
-   
 
-}
-.otherOptions > div > span {
-    flex: 29%;
-    margin: 5px;
-    border: 1px solid rgba(0,0,0,0.2);
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.otherOptions > div > span i {
-    font-size: 22px;
-}
-.otherOptions > button {
-    background:none;
-    border: none;
-    font-weight: bolder;
-    padding: 0;
-    font-size: 15px;
-
+@media (max-width: 700px) {
+  .woman {
+    display: none;
+  }
 }
