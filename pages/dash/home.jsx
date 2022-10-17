@@ -12,11 +12,6 @@ function Home({ data }) {
     const session = useSession();
     console.log(session);
 
-    useEffect(() => {
-        if (session.status !== "authenticated") {
-            Router.replace("/auth/signin");
-        }
-    }, []);
     return (
         <Layout>
             <div className={style.homePage}>

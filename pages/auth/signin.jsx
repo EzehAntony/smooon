@@ -1,13 +1,17 @@
 import styles from "../../styles/login.module.css";
 import Snowfall from "react-snowfall";
-import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const signin = () => {
     const [input, setInput] = useState({
         username: "",
         password: "",
     });
+
+    const session = useSession();
+    const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await signIn("credentials", {
@@ -15,8 +19,13 @@ const signin = () => {
             password: input.password,
             redirect: false,
         });
-        console.log(res);
     };
+
+    useEffect(() => {
+        if (session.status === "authenticated") {
+            router.push("/dash/home");
+        }
+    }, [session.status]);
 
     return (
         <div className={styles.main}>
