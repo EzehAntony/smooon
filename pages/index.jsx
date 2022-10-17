@@ -7,17 +7,16 @@ import Router from "next/router";
 import Script from "next/script";
 
 export default function Home() {
-  useEffect(() => {
-    setTimeout(() => {
-      Router.push("/home")
-    }, 3000);
-  }, []);
-  return (
-    <>
-    <div className={styles.container}>
-      <img src="/logo.png" alt="" />
-
-    </div>
-    </>
-  );
+    useEffect(() => {
+        setTimeout(() => {
+            Router.push("/dash/home");
+        }, 3000);
+    }, []);
+    return (
+        <>
+            <div className={styles.container}>
+                <img src="/logo.png" alt="" />
+            </div>
+        </>
+    );
 }

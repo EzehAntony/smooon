@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import LikerProfile from "../components/LikerProfile";
+import Layout from "../../components/Layout";
+import LikerProfile from "../../components/LikerProfile";
 
 function Like() {
   return (

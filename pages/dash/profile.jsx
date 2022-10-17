@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import style from "../styles/profile.module.css";
+import Layout from "../../components/Layout";
+import style from "../../styles/profile.module.css";
 import { useRouter } from "next/router";
 
 function Profile() {

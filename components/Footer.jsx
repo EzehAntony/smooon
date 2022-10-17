@@ -11,24 +11,24 @@ function Footer() {
 
   return (
     <div className={style.footer}>
-      <Link href={"/minite"}>
+      <Link href={"/dash/minite"}>
         <div>
-        <Image src={router.pathname === "/minite" ? "/notification_active.svg":"/notification.svg"} width={30} height={30} alt="" />
+        <Image src={router.pathname === "/dash/minite" ? "/notification_active.svg":"/notification.svg"} width={30} height={30} alt="" />
         </div>
       </Link>
 
-      <Link href={"/like"}>
+      <Link href={"/dash/like"}>
         <div>
-        <Image src={router.pathname === "/like" ? "/heart_active.svg":"/heart.svg"} width={30} height={30} alt="" />
+        <Image src={router.pathname === "/dash/like" ? "/heart_active.svg":"/heart.svg"} width={30} height={30} alt="" />
         </div>
         
       </Link>
 
-      <Link href={"/home"}>
+      <Link href={"/dash/home"}>
         <div>
         <Image
          
-          src={router.pathname === "/home" ? "/fire_active.svg":"/fire.svg"}
+          src={router.pathname === "/dash/home" ? "/fire_active.svg":"/fire.svg"}
           className={style.fire}
           width={45}
           height={45}
@@ -37,16 +37,16 @@ function Footer() {
         </div>
       </Link>
 
-      <Link href={"/message"}>
+      <Link href={"/dash/message"}>
         <div>
-        <Image src={router.pathname === "/message" ? "/message_active.svg":"/message.svg"} width={30} height={30} alt="" />
+        <Image src={router.pathname === "/dash/message" ? "/message_active.svg":"/message.svg"} width={30} height={30} alt="" />
         </div>
         
       </Link>
 
-      <Link href={"/profile"}>
+      <Link href={"/dash/profile"}>
         <div>
-        <Image  src={router.pathname === "/profile" ? "/profile_active.svg":"/profile.svg"} width={30} height={30} alt="" />
+        <Image  src={router.pathname === "/dash/profile" ? "/profile_active.svg":"/profile.svg"} width={30} height={30} alt="" />
         </div>
       </Link>
     </div>

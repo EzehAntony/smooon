@@ -1,7 +1,7 @@
-// import Users from "../../../api/models/Users";
 import user from "../../models/user";
 import axios from "axios";
 import dbConnect from "../../util/mongodb";
+import { verifyUser } from "../../util/jwt";
 
 const handler = async (req, res) => {
     const { method } = req;
@@ -10,21 +10,25 @@ const handler = async (req, res) => {
     switch (method) {
         case "GET":
             try {
-                const res = await user.find();
-                res.status(200).json(res);
+                const all_users = await user.find();
+                res.status(200).json(all_users);
             } catch (error) {
                 res.status(500).json(error);
             }
 
             break;
         case "POST":
-            console.log("POST");
+            try {
+                const create_user = await user.create(req.body);
+                res.status(200).json(create_user);
+            } catch (error) {
+                res.status(500).json(error);
+            }
             break;
         case "PUT":
-            console.log("PUT");
             break;
-        case "Delete":
-            console.log("Delete");
+        case "DELETE":
+            res.status(200).json("DELETE");
             break;
     }
 };

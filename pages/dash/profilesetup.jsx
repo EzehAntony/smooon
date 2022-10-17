@@ -1,4 +1,4 @@
-import style from "../styles/profileSetup.module.css";
+import style from "../../styles/profileSetup.module.css";
 import { useRouter } from "next/router";
 
 function Profilesetup() {

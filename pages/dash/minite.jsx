@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import styles from "../styles/minite.module.css";
+import Layout from "../../components/Layout";
+import styles from "../../styles/minite.module.css";
 
 function Minite() {
   return (

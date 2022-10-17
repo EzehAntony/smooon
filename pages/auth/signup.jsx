@@ -22,7 +22,6 @@ const signup = () => {
             method: "POST",
             url: "https://smooon-backend.vercel.app/api/auth/register",
             data: input,
-            withCredentials: true,
         })
             .then((res) => {
                 console.log(res);
