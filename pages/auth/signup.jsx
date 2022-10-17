@@ -3,7 +3,7 @@ import styles from "../../styles/signup.module.css";
 import Snowfall from "react-snowfall";
 import axios from "axios";
 
-const signup = () => {
+const Signup = () => {
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
@@ -20,11 +20,11 @@ const signup = () => {
         console.log(input);
         await axios({
             method: "POST",
-            url: "https://smooon-backend.vercel.app/api/auth/register",
+            url: "https://smooon.vercel.app/api/auth/register",
             data: input,
         })
             .then((res) => {
-                console.log(res);
+                router.push("/auth/Signin");
             })
             .catch((err) => {
                 console.log(err);
@@ -102,4 +102,4 @@ const signup = () => {
     );
 };
 
-export default signup;
+export default Signup;

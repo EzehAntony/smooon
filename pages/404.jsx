@@ -7,9 +7,8 @@ function Error() {
 
     useEffect(() => {
         setTimeout(() => {
-            /*             router.push("/dash/home"); */
-        }, 3000);
-        router.push("/auth/signin");
+            router.push("/auth/Signin");
+        }, 1000);
     }, [router]);
 
     return (

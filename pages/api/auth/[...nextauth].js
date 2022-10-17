@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect from "../../../util/mongodb";
 import user from "../../../models/user";
 import bcryptjs from "bcryptjs";
+
 export default NextAuth({
     session: {
         strategy: "jwt",
@@ -36,7 +37,7 @@ export default NextAuth({
         }),
     ],
     pages: {
-        signIn: "/auth/signin",
+        signIn: "/auth/Signin",
     },
     callbacks: {
         async session({ token, session }) {

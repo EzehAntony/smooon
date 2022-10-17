@@ -4,7 +4,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const signin = () => {
+const Signin = () => {
     const [input, setInput] = useState({
         username: "",
         password: "",
@@ -65,4 +65,4 @@ const signin = () => {
     );
 };
 
-export default signin;
+export default Signin;

@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 import style from "../../styles/home.module.css";
 import Image from "next/image";
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 function Home({ data }) {
-    const Router = useRouter();
-    const session = useSession();
-    console.log(session);
-
     return (
         <Layout>
             <div className={style.homePage}>
