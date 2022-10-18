@@ -1,7 +1,6 @@
 import user from "../../models/user";
 import axios from "axios";
 import dbConnect from "../../util/mongodb";
-import { verifyUser } from "../../util/jwt";
 
 const handler = async (req, res) => {
     const { method } = req;

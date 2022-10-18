@@ -23,7 +23,8 @@ const Signin = () => {
 
     useEffect(() => {
         if (session.status === "authenticated") {
-            router.push("/dash/home");
+            const id = session.data.user.id;
+            router.push(`/dash/home`);
         }
     }, [session.status]);
 

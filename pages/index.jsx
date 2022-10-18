@@ -9,7 +9,7 @@ import Script from "next/script";
 export default function Home() {
     useEffect(() => {
         setTimeout(() => {
-            Router.push("/dash/home");
+            Router.push("/auth/Signin");
         }, 3000);
     }, []);
     return (
