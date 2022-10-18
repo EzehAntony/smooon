@@ -29,7 +29,9 @@ function Profile({ data }) {
 
                 <div className={style.info}>
                     <h4>@{data.username}</h4>
-                    <p>{data.firstname} {data.lastname}</p>
+                    <p>
+                        {data.firstname} {data.lastname}
+                    </p>
                     <p>{data.state}</p>
 
                     <div className={style.education}>
@@ -38,7 +40,7 @@ function Profile({ data }) {
                     </div>
                     <div className={style.event}>
                         <img src="/event.svg" alt="" />
-                        {data.interest.length < 1 ? "Not set" : data.interest.map((i) => <p>{i}</p>)}
+                        {data.interest.length < 1 ? "Not set" : data.interest.map((i, index) => <p key={index}>{i}</p>)}
                     </div>
                 </div>
 
