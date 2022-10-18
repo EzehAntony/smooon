@@ -3,11 +3,9 @@ import style from "../../../styles/profile.module.css";
 import { useRouter } from "next/router";
 
 function Profile({ data }) {
-    console.log(data);
-
     return (
         <Layout>
-            <div className={style.profile}>
+            {/*             <div className={style.profile}>
                 <div className={style.userImg}>
                     <img src="/girl.jpg" alt="" />
                 </div>
@@ -54,13 +52,13 @@ function Profile({ data }) {
                     Gender <span>{data.gender}</span>
                 </div>
                 <hr />
-            </div>
+            </div> */}
         </Layout>
     );
 }
 export default Profile;
 
-export async function getServerSideProps(context) {
+/* export async function getServerSideProps(context) {
     const { params } = context;
     const res = await fetch(`https://smooon.vercel.app//api/oneuser/${params.profile}`);
 
@@ -73,3 +71,4 @@ export async function getServerSideProps(context) {
         },
     };
 }
+ */
