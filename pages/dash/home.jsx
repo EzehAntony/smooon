@@ -25,7 +25,7 @@ function Home({ data }) {
 }
 
 export async function getStaticProps() {
-    const res = await fetch("http://localhost:3000/api/user", {
+    const res = await fetch("https://smooon.vercel.app//api/user", {
         method: "GET",
         withCredentials: true,
         headers: {

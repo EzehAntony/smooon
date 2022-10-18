@@ -62,7 +62,7 @@ export default Profile;
 
 export async function getServerSideProps(context) {
     const { params } = context;
-    const res = await fetch(`http://localhost:3000/api/oneuser/${params.profile}`);
+    const res = await fetch(`https://smooon.vercel.app//api/oneuser/${params.profile}`);
 
     const data = await res.json();
     const { password, ...others } = data;
