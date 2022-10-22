@@ -1,86 +1,100 @@
 .main {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  width: 40px;
-  z-index: 1;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 40px;
+    z-index: 1;
 }
 
 .loginModal {
-  z-index: 1;
-  position: relative;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 600px;
-  box-shadow: 5px 9px 20px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 400px;
-  height: 500px;
-  background-color: #ffffffd8;
+    z-index: 1;
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    box-shadow: 5px 9px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    height: 500px;
+    background-color: #ffffffd8;
 }
 
 .loginModal h2 {
-  color: #f62355;
-  font-size: 35px;
-  text-align: center;
+    color: #f62355;
+    font-size: 35px;
+    text-align: center;
 }
 
 .loginModal h3 {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 500;
-  margin: 20px 10% 30px 10%;
-  font-weight: 600;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 20px 10% 30px 10%;
+    font-weight: 600;
 }
 .loginModal form {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
-.loginModal form button {
-  background: none;
-  border: none;
-  color: black;
-  font-weight: 500;
-  font-size: 15px;
-  margin: 10px 0;
+.register {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.register span {
+    color: #f62355;
+    margin-left: 5px;
 }
 
 .loginModal form input {
-  width: 100%;
-  margin: 10px 0px;
-  height: 40px;
-  border: none;
-  padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+    width: 100%;
+    margin: 10px 0px;
+    height: 40px;
+    border: none;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
+
 .submitBtn {
-  width: 100%;
-  background-color: #f62355 !important;
-  height: 40px;
-  border-radius: 8px;
-  cursor: pointer;
+    width: 100%;
+    background-color: #f62355 !important;
+    color: white;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0;
 }
 
 .woman {
-  width: 30%;
-  margin-left: 20px;
+    width: 30%;
+    margin-left: 20px;
 }
 
 @media (max-width: 700px) {
-  .woman {
-    display: none;
-  }
+    .woman {
+        display: none;
+    }
 }

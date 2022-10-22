@@ -7,7 +7,7 @@ function Error() {
 
     useEffect(() => {
         setTimeout(() => {
-            router.push("/auth/Signin");
+            router.replace("/auth/signin");
         }, 1000);
     }, [router]);
 

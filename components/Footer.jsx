@@ -10,7 +10,9 @@ function Footer() {
     const [id, setId] = useState("");
     const session = useSession();
     useEffect(() => {
-        setId(session.data.user.id);
+        if (session.data) {
+            setId(session.data.user.id);
+        }
     }, [session]);
     const router = useRouter();
 

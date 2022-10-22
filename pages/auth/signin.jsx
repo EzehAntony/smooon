@@ -3,8 +3,13 @@ import Snowfall from "react-snowfall";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { ClapSpinner } from "react-spinners-kit";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
+    const [loading, setLoading] = useState(false);
     const [input, setInput] = useState({
         username: "",
         password: "",
@@ -14,13 +19,37 @@ const Signin = () => {
     const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await signIn("credentials", {
-            username: input.username,
-            password: input.password,
-            redirect: false,
-        });
+        if (!input.username.includes(" ")) {
+            try {
+                setLoading(true);
+                const res = await signIn("credentials", {
+                    username: input.username,
+                    password: input.password,
+                    redirect: false,
+                });
+                if (res.error) {
+                    toast(`${res.error}`, {
+                        type: "error",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                    });
+                }else {
+                    toast(`Logged in`, {
+                        type: "success",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                    });
+                }
+                setLoading(false);
+            } catch (error) {}
+        } else {
+            toast(`Username can not have white spaces`, {
+                type: "warning",
+                autoClose: 2000,
+                hideProgressBar: true,
+            });
+        }
     };
-
     useEffect(() => {
         if (session.status === "authenticated") {
             const id = session.data.user.id;
@@ -39,29 +68,41 @@ const Signin = () => {
                         type="text"
                         value={input.username}
                         required
+                        autoComplete="off"
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
                         placeholder="Enter your username"
-                        name="input"
+                        name="username"
                     />
 
                     <input
                         required
                         type="password"
-                        name="input"
+                        name="password"
                         placeholder="********"
                         value={input.password}
+                        input
                         onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
                     />
-                    <button>Having trouble signing in?</button>
-                    <br />
-                    <button className={styles.submitBtn} type="submit">
-                        Sign in
+                    <p
+                        className={styles.register}
+                        onClick={() => {
+                            router.push("/auth/signup");
+                        }}
+                    >
+                        Register
+                        <span>here!</span>
+                    </p>
+
+                    <button className={styles.submitBtn} name="input">
+                        {!loading && "Signin"}
+                        <ClapSpinner loading={loading} frontColor="#fff" size="18" />
                     </button>
                 </form>
             </div>
 
             <img src="/womanWithAHeart.svg" className={styles.woman} alt="" />
             <Snowfall color="#F62355" />
+            <ToastContainer />
         </div>
     );
 };

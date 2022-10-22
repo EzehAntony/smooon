@@ -19,10 +19,12 @@
     "next": "^12.3.1",
     "next-auth": "^4.14.0",
     "react": "18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-snowfall": "^1.2.1",
     "react-spinners-kit": "^1.9.1",
-    "react-tinder-card": "^1.5.4"
+    "react-tinder-card": "^1.5.4",
+    "react-toastify": "^9.0.8"
   },
   "devDependencies": {
     "@types/react": "18.0.21",

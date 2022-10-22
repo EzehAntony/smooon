@@ -3,6 +3,7 @@ import style from "../../../styles/profile.module.css";
 import { useRouter } from "next/router";
 
 function Profile({ data }) {
+    const router = useRouter();
     return (
         <Layout>
             <div className={style.profile}>
@@ -32,6 +33,10 @@ function Profile({ data }) {
                     </p>
                     <p>{data.state}</p>
 
+                    <div className={style.likes}>
+                        <img src="/rheart.svg" alt="" />
+                        {data.interest.length < 100 ? `Likes: ${data.interest.length}` : `Likes: 100+`}
+                    </div>
                     <div className={style.education}>
                         <img src="/education.svg" alt="" />
                         {data.education !== "" ? data.education : "Not Set"}

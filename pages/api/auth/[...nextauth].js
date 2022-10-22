@@ -8,7 +8,7 @@ export default NextAuth({
     session: {
         strategy: "jwt",
     },
-
+    secret: process.env.jwt,
     providers: [
         CredentialsProvider({
             name: "credentials",
@@ -21,23 +21,25 @@ export default NextAuth({
 
                 const decodedPassword = await bcryptjs.compare(password, users.password);
 
+                //Error Becaue no password 'cause no user
+
                 if (!users) {
                     throw new Error("No such user in the database");
-                }
-
-                if (users.username === username && !decodedPassword) {
-                    throw new Error("Password does not match");
-                }
-
-                if (users.username === username && decodedPassword) {
-                    console.log(users);
-                    return { id: users._id, username: users.username, firstname: users.firstname };
+                } else {
+                    if (users.username === username && decodedPassword)
+                        return {
+                            id: users.id,
+                            username: users.username,
+                        };
+                    else if (users.username === username && !decodedPassword) {
+                        throw new Error(`Incorrect password, ${users.firstname}!`);
+                    }
                 }
             },
         }),
     ],
     pages: {
-        signIn: "/auth/Signin",
+        signIn: "/auth/signin",
     },
     callbacks: {
         async session({ token, session }) {

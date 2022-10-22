@@ -2,8 +2,15 @@ import { useState } from "react";
 import styles from "../../styles/signup.module.css";
 import Snowfall from "react-snowfall";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { ClapSpinner } from "react-spinners-kit";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
@@ -17,17 +24,18 @@ const Signup = () => {
 
     const submit = async (e) => {
         e.preventDefault();
-        console.log(input);
+        setLoading(true);
         await axios({
             method: "POST",
-            url: "https://smooon.vercel.app/api/auth/register",
+            url: "/api/auth/register",
             data: input,
         })
             .then((res) => {
-                router.push("/auth/Signin");
+                setLoading(false);
+                router.push("/auth/signin");
             })
             .catch((err) => {
-                console.log(err);
+                setLoading(false);
             });
     };
 
@@ -35,7 +43,7 @@ const Signup = () => {
         <div className={styles.main}>
             <img src="/logo.png" alt="" className={styles.logo} />
 
-            <div className={styles.loginModal}>
+            <div className={styles.registerModal}>
                 <h2>Sign up</h2>
                 <h3>Hi there! Create an acoount to see other smoooners!</h3>
                 <form onSubmit={(e) => submit(e)}>
@@ -90,14 +98,25 @@ const Signup = () => {
                         value={input.confirmPassword}
                         onChange={(e) => setInput((prev) => ({ ...prev, confirmPassword: e.target.value }))}
                     />
+                    <p
+                        className={styles.login}
+                        onClick={() => {
+                            router.push("/auth/signin");
+                        }}
+                    >
+                        Already have an account?
+                        <span>Login here!</span>
+                    </p>
                     <button className={styles.submitBtn} type="submit">
-                        Sign up
+                        {!loading && "SignUp"}
+                        <ClapSpinner loading={loading} frontColor="#fff" size="18" />
                     </button>
                 </form>
             </div>
             <img src="/womanWithAHeart.svg" className={styles.woman} alt="" />
 
             <Snowfall color="#F62355" />
+            <ToastContainer />
         </div>
     );
 };
