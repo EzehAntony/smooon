@@ -1,17 +1,8 @@
 import React, { useEffect } from "react";
 import Footer from "./Footer";
 import Head from "next/head";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 function Layout({ children }) {
-    const session = useSession();
-    const router = useRouter();
-    useEffect(() => {
-        if (session.status !== "authenticated") {
-            router.replace("/auth/signin");
-        }
-    }, [session.status]);
     return (
         <div>
             <Head>

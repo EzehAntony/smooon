@@ -16,6 +16,7 @@ const handler = async (req, res) => {
                 const singleUser = await user.findOne({ _id: id });
                 res.status(200).json(singleUser);
             } catch (error) {
+                console.log("WHyy")
                 res.status(500).json(error);
             }
 

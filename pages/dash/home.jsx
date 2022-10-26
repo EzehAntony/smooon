@@ -5,6 +5,7 @@ import style from "../../styles/home.module.css";
 import Image from "next/image";
 
 function Home({ data }) {
+    console.log(data);
     return (
         <Layout>
             <div className={style.homePage}>

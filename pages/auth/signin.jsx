@@ -4,11 +4,15 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { ClapSpinner } from "react-spinners-kit";
+import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setCookie } from "cookies-next";
+import userStore from "../../userStore";
 
 const Signin = () => {
+    const setUser = userStore((state) => state.setUser);
     const [loading, setLoading] = useState(false);
     const [input, setInput] = useState({
         username: "",
@@ -20,28 +24,38 @@ const Signin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!input.username.includes(" ")) {
-            try {
-                setLoading(true);
-                const res = await signIn("credentials", {
+            setLoading(true);
+            await axios({
+                method: "POST",
+                url: "http://localhost:3000/api/auth/login",
+                data: {
                     username: input.username,
                     password: input.password,
-                    redirect: false,
-                });
-                if (res.error) {
-                    toast(`${res.error}`, {
-                        type: "error",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                    });
-                }else {
+                },
+            })
+                .then((res) => {
+                    const { _id } = res.data;
+                    setUser(_id);
+
                     toast(`Logged in`, {
                         type: "success",
                         autoClose: 2000,
                         hideProgressBar: true,
+                        onClose: () => {
+                            router.push(`/dash/profile/${_id}`);
+                        },
                     });
-                }
-                setLoading(false);
-            } catch (error) {}
+                    setLoading(false);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toast(`${error.response?.data ? error.response.data : "unexpected server error"}`, {
+                        type: "error",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                    });
+                    setLoading(false);
+                });
         } else {
             toast(`Username can not have white spaces`, {
                 type: "warning",

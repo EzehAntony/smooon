@@ -1,5 +1,6 @@
 import Layout from "../../../components/Layout";
 import style from "../../../styles/profile.module.css";
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 
 function Profile({ data }) {
@@ -27,34 +28,36 @@ function Profile({ data }) {
                 </div>
 
                 <div className={style.info}>
-                    <h4>@{data.username}</h4>
+                    <h4>@{data?.username}</h4>
                     <p>
-                        {data.firstname} {data.lastname}
+                        {data?.firstname} {data?.lastname}
                     </p>
-                    <p>{data.state}</p>
+                    <p>{data?.state}</p>
 
                     <div className={style.likes}>
                         <img src="/rheart.svg" alt="" />
-                        {data.interest.length < 100 ? `Likes: ${data.interest.length}` : `Likes: 100+`}
+                        {data?.interest?.length < 100 ? `Likes: ${data?.interest.length}` : `Likes: 100+`}
                     </div>
                     <div className={style.education}>
                         <img src="/education.svg" alt="" />
-                        {data.education !== "" ? data.education : "Not Set"}
+                        {data?.education !== "" ? data?.education : "Not Set"}
                     </div>
                     <div className={style.event}>
                         <img src="/event.svg" alt="" />
-                        {data.interest.length < 1 ? "Not set" : data.interest.map((i, index) => <p key={index}>{i}</p>)}
+                        {data?.interest?.length < 1
+                            ? "Not set"
+                            : data?.interest?.map((i, index) => <p key={index}>{i}</p>)}
                     </div>
                 </div>
 
                 <div className={style.bio}>
                     <span>about</span>
-                    {data.bio}
+                    {data?.bio}
                 </div>
 
                 <hr />
                 <div className={style.gender}>
-                    Gender <span>{data.gender}</span>
+                    Gender <span>{data?.gender}</span>
                 </div>
                 <hr />
             </div>
@@ -63,16 +66,8 @@ function Profile({ data }) {
 }
 export default Profile;
 
-export async function getServerSideProps(context) {
-    const { params } = context;
-    const res = await fetch(`https://smooon.vercel.app/api/oneuser/${params.profile}`);
+export const getServersideProps = async (context) => {
+    console.log(context);
+};
 
-    const data = await res.json();
-    const { password, ...others } = data;
 
-    return {
-        props: {
-            data: others,
-        },
-    };
-}
