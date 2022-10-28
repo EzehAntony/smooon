@@ -22,10 +22,6 @@ const handler = async (req, res) => {
                             .setIssuedAt()
                             .sign(secret);
 
-                        setCookie("user", dbUser._id, {
-                            req,
-                            res,
-                        });
                         setCookie("token", token, {
                             req,
                             res,

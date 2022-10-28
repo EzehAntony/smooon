@@ -2,8 +2,11 @@ import Layout from "../../../components/Layout";
 import style from "../../../styles/profile.module.css";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { NextResponse } from "next/server";
 
 function Profile({ data }) {
+    NextResponse.rewrite("http://localhost:3000/unauthenticated");
     const router = useRouter();
     return (
         <Layout>
@@ -66,8 +69,21 @@ function Profile({ data }) {
 }
 export default Profile;
 
-export const getServersideProps = async (context) => {
-    console.log(context);
-};
+export async function getServerSideProps({ query, req }) {
+    const { profile } = query;
+    const res = await fetch(`http://localhost:3000/api/oneuser/${profile}`, {
+        method: "GET",
+        credentials: true,
+        headers: {
+            "content-type": "application/json",
+            cookie: req.headers.cookie,
+        },
+    });
+    const data = await res.json();
 
-
+    return {
+        props: {
+            data: data,
+        },
+    };
+}

@@ -3,28 +3,28 @@ import { NextRequest, NextResponse } from "next/server";
 import userStore from "./userStore";
 
 const middleware = async (req, res) => {
-    if (req.url.includes("/api/oneuser")) {
+    if (req.nextUrl.pathname.includes("/oneuser")) {
         const secret = new TextEncoder().encode(process.env.jwt);
-        const req_id = req.url.split("/").pop();
+        const req_id = req.nextUrl.pathname.split("/").pop();
         const token = req.cookies.get("token");
 
-        if (token) {
-            const decToken = await jwtVerify(token, secret);
-            if (decToken) {
-                const serverId = decToken.payload.id;
-                console.log(serverId, req_id);
-                if (req_id !== serverId) {
-                    console.log("not the same");
+        if (!token) {
+            return NextResponse.error();
+        } else {
+            const decoded = await jwtVerify(token, secret);
+            if (decoded) {
+                //decoded.payload.id
+                if (decoded.payload.id === req_id) {
+                    return NextResponse.next();
+                } else {
                     return NextResponse.error();
                 }
             } else {
-                console.log("the same");
-                return NextResponse.next();
+                return NextResponse.redirect("http://localhost:3000/unauthenticated");
             }
-        } else {
-            return NextResponse.redirect("http://localhost:3000/login");
         }
     } else {
+        NextResponse.next();
     }
 };
 
