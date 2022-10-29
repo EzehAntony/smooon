@@ -1,8 +1,6 @@
-import Layout from "../../../components/Layout";
-import style from "../../../styles/profile.module.css";
-import { getCookie } from "cookies-next";
+import Layout from "../../components/Layout";
+import style from "../../styles/profile.module.css";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { NextResponse } from "next/server";
 
 function Profile({ data }) {
@@ -69,9 +67,8 @@ function Profile({ data }) {
 }
 export default Profile;
 
-export async function getServerSideProps({ query, req }) {
-    const { profile } = query;
-    const res = await fetch(`http://localhost:3000/api/oneuser/${profile}`, {
+export async function getServerSideProps({ req }) {
+    const res = await fetch(`http://localhost:3000/api/getoneuser`, {
         method: "GET",
         credentials: true,
         headers: {

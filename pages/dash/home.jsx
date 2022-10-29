@@ -5,7 +5,6 @@ import style from "../../styles/home.module.css";
 import Image from "next/image";
 
 function Home({ data }) {
-    console.log(data);
     return (
         <Layout>
             <div className={style.homePage}>
@@ -25,12 +24,13 @@ function Home({ data }) {
 }
 export default Home;
 
-export async function getStaticProps() {
-    const res = await fetch("https://smooon.vercel.app/api/user", {
+export async function getServerSideProps({ req }) {
+    const res = await fetch("http://localhost:3000/api/homeusers", {
         method: "GET",
         withCredentials: true,
         headers: {
             "content-type": "application/json",
+            cookie: req.headers.cookie,
         },
     });
 
@@ -38,7 +38,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            data,
+            data: data,
         },
     };
 }

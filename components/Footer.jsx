@@ -4,16 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Router from "next/router";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+
 
 function Footer() {
     const [id, setId] = useState("");
-    const session = useSession();
-    useEffect(() => {
-        if (session.data) {
-            setId(session.data.user.id);
-        }
-    }, [session]);
+
     const router = useRouter();
 
     return (

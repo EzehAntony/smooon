@@ -2,6 +2,7 @@ import { jwtVerify } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 import userStore from "./userStore";
 
+
 const middleware = async (req, res) => {
     if (req.nextUrl.pathname.includes("/oneuser")) {
         const secret = new TextEncoder().encode(process.env.jwt);

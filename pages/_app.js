@@ -1,13 +1,10 @@
-import Layout from "../components/Layout";
-import "../styles/globals.css";
-import { SessionProvider } from "next-auth/react";
+import Error from "next/error";
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <SessionProvider session={pageProps.session}>
-            <Component {...pageProps} />
-        </SessionProvider>
-    );
+    if (pageProps.error) {
+        return <Error statusCode={pageProps.error.statusCode} title={pageProps.error.message} />;
+    }
+    return <Component {...pageProps} />;
 }
 
 export default MyApp;

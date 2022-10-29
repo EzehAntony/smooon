@@ -19,7 +19,6 @@ const Signin = () => {
         password: "",
     });
 
-    const session = useSession();
     const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,13 +41,12 @@ const Signin = () => {
                         autoClose: 2000,
                         hideProgressBar: true,
                         onClose: () => {
-                            router.push(`/dash/profile/${_id}`);
+                            router.push(`/dash/profile`);
                         },
                     });
                     setLoading(false);
                 })
                 .catch((error) => {
-                    console.log(error);
                     toast(`${error.response?.data ? error.response.data : "unexpected server error"}`, {
                         type: "error",
                         autoClose: 2000,
@@ -64,12 +62,6 @@ const Signin = () => {
             });
         }
     };
-    useEffect(() => {
-        if (session.status === "authenticated") {
-            const id = session.data.user.id;
-            router.push(`/dash/home`);
-        }
-    }, [session.status]);
 
     return (
         <div className={styles.main}>

@@ -28,6 +28,7 @@ const handler = async (req, res) => {
                             httpOnly: true,
                             sameSite: "lax",
                         });
+                        setCookie("id", dbUser._id, { req, res });
 
                         const { password, ...others } = dbUser._doc;
 
