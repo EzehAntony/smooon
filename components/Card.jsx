@@ -7,9 +7,21 @@ function Card({ name, state, age, id }) {
     const [liked, setLiked] = useState(false);
     const [loggedUser, setLoggedUser] = useState({});
 
+    
+    const like = async (e) => {
+        e.preventDefault();
+        await axios({
+            url: "http://localhost:3000/api/addlikes",
+            method: "PUT",
+            data: {
+                id: id,
+            },
+            withCredentials: true,
+        });
+    };
     useEffect(() => {
         fetchData();
-    }, [loggedUser.liked]);
+    }, [like]);
 
     const fetchData = async () => {
         await axios({
@@ -32,7 +44,7 @@ function Card({ name, state, age, id }) {
         } else {
             setLiked(false);
         }
-    }, [loggedUser]);
+    }, [like]);
     var [left, setLeft] = useState([]);
 
     useEffect(() => {}, [left]);
@@ -44,17 +56,6 @@ function Card({ name, state, age, id }) {
         }
     };
 
-    const like = async (e) => {
-        e.preventDefault();
-        await axios({
-            url: "http://localhost:3000/api/addlikes",
-            method: "PUT",
-            data: {
-                id: id,
-            },
-            withCredentials: true,
-        });
-    };
 
     return (
         <TinderCard
