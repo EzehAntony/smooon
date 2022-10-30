@@ -11,7 +11,7 @@ function Card({ name, state, age, id }) {
     const like = async (e) => {
         e.preventDefault();
         await axios({
-            url: "http://localhost:3000/api/addlikes",
+            url: "https://smooon.vercel.app/api/addlikes",
             method: "PUT",
             data: {
                 id: id,
@@ -44,7 +44,8 @@ function Card({ name, state, age, id }) {
         } else {
             setLiked(false);
         }
-    }, [like]);
+    }, [loggedUser]);
+
     var [left, setLeft] = useState([]);
 
     useEffect(() => {}, [left]);
