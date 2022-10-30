@@ -5,6 +5,8 @@ import style from "../../styles/home.module.css";
 import Image from "next/image";
 
 function Home({ data }) {
+    const user = data.main;
+    const homedata = data.users;
     return (
         <Layout>
             <div className={style.homePage}>
@@ -14,8 +16,16 @@ function Home({ data }) {
                 </header>
 
                 <div className={style.main}>
-                    {data.reverse().map((d, k) => (
-                        <Card key={k} id={d._id} name={d.username} state={d.state} age={d.dob} styles={d.styles} />
+                    {data.users.reverse().map((d, k) => (
+                        <Card
+                            key={k}
+                            id={d._id}
+                            name={d.username}
+                            state={d.state}
+                            age={d.dob}
+                            styles={d.styles}
+                            user={user._id}
+                        />
                     ))}
                 </div>
             </div>

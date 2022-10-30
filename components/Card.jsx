@@ -4,6 +4,35 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Card({ name, state, age, id }) {
+    const [liked, setLiked] = useState(false);
+    const [loggedUser, setLoggedUser] = useState({});
+
+    useEffect(() => {
+        fetchData();
+    }, [loggedUser.liked]);
+
+    const fetchData = async () => {
+        await axios({
+            method: "GET",
+            url: "http://localhost:3000/api/profile",
+            withCredentials: true,
+        })
+            .then((res) => {
+                setLoggedUser(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(() => {
+        if (loggedUser.liked?.includes(id)) {
+            setLiked(true);
+        } else {
+            setLiked(false);
+        }
+    }, [loggedUser]);
     var [left, setLeft] = useState([]);
 
     useEffect(() => {}, [left]);
@@ -24,13 +53,7 @@ function Card({ name, state, age, id }) {
                 id: id,
             },
             withCredentials: true,
-        })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        });
     };
 
     return (
@@ -46,7 +69,11 @@ function Card({ name, state, age, id }) {
                 <div className={style.up}>
                     <img src="/henessy.jpg" alt="" />
                     <div className={style.action}>
-                        <img src="/rheart.svg" alt="" onClick={(e) => like(e)} />
+                        {liked ? (
+                            <img src="/rheart.svg" alt="" onClick={(e) => like(e)} />
+                        ) : (
+                            <img src="/heart.svg" alt="" onClick={(e) => like(e)} />
+                        )}
                         <img src="/star.svg" alt="" />
                         <img src="/close.svg" alt="" />
                     </div>

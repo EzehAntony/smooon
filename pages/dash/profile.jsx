@@ -29,36 +29,36 @@ function Profile({ data }) {
                 </div>
 
                 <div className={style.info}>
-                    <h4>@{data?.username}</h4>
+                    <h4>@{data.username}</h4>
                     <p>
-                        {data?.firstname} {data?.lastname}
+                        {data.firstname} {data.lastname}
                     </p>
-                    <p>{data?.state}</p>
+                    <p>{data.state}</p>
 
                     <div className={style.likes}>
                         <img src="/rheart.svg" alt="" />
-                        {data?.interest?.length < 100 ? `Likes: ${data?.interest.length}` : `Likes: 100+`}
+                        {data.liked?.length < 100 ? `Likes: ${data.liked.length}` : `Likes: 100+`}
                     </div>
                     <div className={style.education}>
                         <img src="/education.svg" alt="" />
-                        {data?.education !== "" ? data?.education : "Not Set"}
+                        {data.education !== "" ? data.education : "Not Set"}
                     </div>
                     <div className={style.event}>
                         <img src="/event.svg" alt="" />
-                        {data?.interest?.length < 1
+                        {data.interest?.length < 1
                             ? "Not set"
-                            : data?.interest?.map((i, index) => <p key={index}>{i}</p>)}
+                            : data.interest?.map((i, index) => <p key={index}>{i}</p>)}
                     </div>
                 </div>
 
                 <div className={style.bio}>
                     <span>about</span>
-                    {data?.bio}
+                    {data.bio}
                 </div>
 
                 <hr />
                 <div className={style.gender}>
-                    Gender <span>{data?.gender}</span>
+                    Gender <span>{data.gender}</span>
                 </div>
                 <hr />
             </div>
