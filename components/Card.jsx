@@ -21,7 +21,7 @@ function Card({ name, state, age, id }) {
     };
     useEffect(() => {
         fetchData();
-    }, [like]);
+    });
 
     const fetchData = async () => {
         await axios({
