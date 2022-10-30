@@ -6,7 +6,6 @@ import Image from "next/image";
 
 function Home({ data }) {
     const user = data.main;
-    const homedata = data.users;
     return (
         <Layout>
             <div className={style.homePage}>
@@ -35,7 +34,7 @@ function Home({ data }) {
 export default Home;
 
 export async function getServerSideProps({ req }) {
-    const res = await fetch("http://localhost:3000/api/homeusers", {
+    const res = await fetch("https://smooon.vercel.app/api/homeusers", {
         method: "GET",
         withCredentials: true,
         headers: {

@@ -14,7 +14,7 @@ function Card({ name, state, age, id }) {
     const fetchData = async () => {
         await axios({
             method: "GET",
-            url: "http://localhost:3000/api/profile",
+            url: "https://smooon.vercel.app/api/profile",
             withCredentials: true,
         })
             .then((res) => {
