@@ -44,7 +44,7 @@ const Signup = () => {
             setLoading(true);
             await axios({
                 method: "POST",
-                url: "/api/auth/register",
+                url: "https://smooon.vercel.app/api/auth/register",
                 data: input,
             })
                 .then((res) => {
