@@ -1,6 +1,7 @@
 import style from "../styles/Card.module.css";
 import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Card({ name, state, age, id }) {
     var [left, setLeft] = useState([]);
@@ -12,6 +13,24 @@ function Card({ name, state, age, id }) {
             setLeft((prev) => [...prev, id]);
         } else if (direction === "right") {
         }
+    };
+
+    const like = async (e) => {
+        e.preventDefault();
+        await axios({
+            url: "http://localhost:3000/api/addlikes",
+            method: "PUT",
+            data: {
+                id: id,
+            },
+            withCredentials: true,
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (
@@ -27,7 +46,7 @@ function Card({ name, state, age, id }) {
                 <div className={style.up}>
                     <img src="/henessy.jpg" alt="" />
                     <div className={style.action}>
-                        <img src="/rheart.svg" alt="" />
+                        <img src="/rheart.svg" alt="" onClick={(e) => like(e)} />
                         <img src="/star.svg" alt="" />
                         <img src="/close.svg" alt="" />
                     </div>

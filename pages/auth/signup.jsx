@@ -23,20 +23,49 @@ const Signup = () => {
     });
 
     const submit = async (e) => {
+        console.log(input.gender);
         e.preventDefault();
-        setLoading(true);
-        await axios({
-            method: "POST",
-            url: "/api/auth/register",
-            data: input,
-        })
-            .then((res) => {
-                setLoading(false);
-                router.push("/auth/signin");
-            })
-            .catch((err) => {
-                setLoading(false);
+        if (input.password !== input.confirmPassword) {
+            toast.error("Passwords do not match!", {
+                autoClose: 2000,
+                hideProgressBar: true,
             });
+        } else if (input.password == "" || input.confirmPassword == "") {
+            toast.error("Passwords can not be an empty string", {
+                autoClose: 2000,
+                hideProgressBar: true,
+            });
+        } else if (input.gender !== "m" || input.gender !== "f") {
+            toast.error(`Gender has to be either "m" or "f"`, {
+                autoClose: 3000,
+                hideProgressBar: true,
+            });
+        } else {
+            setLoading(true);
+            await axios({
+                method: "POST",
+                url: "/api/auth/register",
+                data: input,
+            })
+                .then((res) => {
+                    setLoading(false);
+                    toast.success("Registered", {
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        onClose: () => {
+                            router.push("/auth/signin");
+                        },
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setLoading(false);
+                    toast.error(`${err.response.data}`, {
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                    });
+                });
+        }
     };
 
     return (
@@ -48,30 +77,35 @@ const Signup = () => {
                 <h3>Hi there! Create an acoount to see other smoooners!</h3>
                 <form onSubmit={(e) => submit(e)}>
                     <input
+                        required
                         type="text"
                         value={input.firstname}
                         onChange={(e) => setInput((prev) => ({ ...prev, firstname: e.target.value }))}
                         placeholder="Firstname"
                     />
                     <input
+                        required
                         type="text"
                         value={input.lastname}
                         onChange={(e) => setInput((prev) => ({ ...prev, lastname: e.target.value }))}
                         placeholder="Lastname"
                     />
                     <input
+                        required
                         type="text"
                         value={input.username}
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
                         placeholder="Username"
                     />
                     <input
+                        required
                         type="text"
                         value={input.state}
                         onChange={(e) => setInput((prev) => ({ ...prev, state: e.target.value }))}
                         placeholder="State"
                     />
                     <input
+                        required
                         type="text"
                         placeholder="gender M/F"
                         maxLength={1}
@@ -79,12 +113,14 @@ const Signup = () => {
                         onChange={(e) => setInput((prev) => ({ ...prev, gender: e.target.value }))}
                     />
                     <input
+                        required
                         type="date"
                         value={input.dob}
                         onChange={(e) => setInput((prev) => ({ ...prev, dob: e.target.value }))}
                         placeholder="DD/MM/YY"
                     />
                     <input
+                        required
                         type="password"
                         value={input.password}
                         onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
@@ -92,6 +128,7 @@ const Signup = () => {
                         placeholder="Password"
                     />
                     <input
+                        required
                         type="password"
                         name=""
                         placeholder="Confirm password"

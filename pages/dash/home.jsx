@@ -15,7 +15,7 @@ function Home({ data }) {
 
                 <div className={style.main}>
                     {data.reverse().map((d, k) => (
-                        <Card key={k} id={d.id} name={d.username} state={d.state} age={d.dob} styles={d.styles} />
+                        <Card key={k} id={d._id} name={d.username} state={d.state} age={d.dob} styles={d.styles} />
                     ))}
                 </div>
             </div>
