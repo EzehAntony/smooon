@@ -35,7 +35,7 @@ const Signup = () => {
                 autoClose: 2000,
                 hideProgressBar: true,
             });
-        } else if (input.gender !== "m" || input.gender !== "f") {
+        } else if (!/[mfMF]/.test(input.gender)) {
             toast.error(`Gender has to be either "m" or "f"`, {
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -44,7 +44,7 @@ const Signup = () => {
             setLoading(true);
             await axios({
                 method: "POST",
-                url: "https://smooon.vercel.app/api/auth/register",
+                url: "http://localhost:3000/api/auth/register",
                 data: input,
             })
                 .then((res) => {
@@ -79,28 +79,28 @@ const Signup = () => {
                     <input
                         required
                         type="text"
-                        value={input.firstname}
+                        value={input.firstname.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, firstname: e.target.value }))}
                         placeholder="Firstname"
                     />
                     <input
                         required
                         type="text"
-                        value={input.lastname}
+                        value={input.lastname.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, lastname: e.target.value }))}
                         placeholder="Lastname"
                     />
                     <input
                         required
                         type="text"
-                        value={input.username}
+                        value={input.username.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
                         placeholder="Username"
                     />
                     <input
                         required
                         type="text"
-                        value={input.state}
+                        value={input.state.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, state: e.target.value }))}
                         placeholder="State"
                     />
@@ -115,14 +115,14 @@ const Signup = () => {
                     <input
                         required
                         type="date"
-                        value={input.dob}
+                        value={input.dob.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, dob: e.target.value }))}
                         placeholder="DD/MM/YY"
                     />
                     <input
                         required
                         type="password"
-                        value={input.password}
+                        value={input.password.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
                         name=""
                         placeholder="Password"
@@ -132,7 +132,7 @@ const Signup = () => {
                         type="password"
                         name=""
                         placeholder="Confirm password"
-                        value={input.confirmPassword}
+                        value={input.confirmPassword.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, confirmPassword: e.target.value }))}
                     />
                     <p

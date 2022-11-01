@@ -26,7 +26,7 @@ const Signin = () => {
             setLoading(true);
             await axios({
                 method: "POST",
-                url: "https://smooon.vercel.app/api/auth/login",
+                url: "http://localhost:3000/api/auth/login",
                 data: {
                     username: input.username,
                     password: input.password,
@@ -41,7 +41,7 @@ const Signin = () => {
                         autoClose: 2000,
                         hideProgressBar: true,
                         onClose: () => {
-                            router.push(`/dash/profile`);
+                            router.push(`/dash/home`);
                         },
                     });
                     setLoading(false);
@@ -72,7 +72,7 @@ const Signin = () => {
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <input
                         type="text"
-                        value={input.username}
+                        value={input.username.toLowerCase()}
                         required
                         autoComplete="off"
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
@@ -85,7 +85,7 @@ const Signin = () => {
                         type="password"
                         name="password"
                         placeholder="********"
-                        value={input.password}
+                        value={input.password.toLowerCase()}
                         input
                         onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
                     />

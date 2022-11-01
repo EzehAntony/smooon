@@ -9,18 +9,32 @@ function LikerProfile({ data }) {
             </div>
 
             <div className={style.info}>
-                <h4>
-                    {data.firstname} {data.lastname}
-                </h4>
-                <p>{data.state} </p>
-                <img src="/female.svg" alt="female" />
-            </div>
+                <header>
+                    <h4>
+                        {data.firstname} {data.lastname}
+                    </h4>
+                    {data.gender === "m" ? <img src="/male.svg" alt="male" /> : <img src="/female.svg" alt="female" />}
+                </header>
+                <p>
+                    <img src="/badge.svg" alt="" />
+                    {data.username}
+                </p>
 
-            <div className={style.bio}>
-                <span>about</span>
-                {data.bio}
+                <p>
+                    <img src="/edit.svg" alt="" />
+                    {data.bio}
+                </p>
+
+                <p>
+                    <img src="/pin.svg" alt="" />
+                    {data.state}
+                </p>
+
+                <p>
+                    <img src="/event.svg" alt="" />
+                    {data.dob} ({2022 - data.dob.split("-")[0]})
+                </p>
             </div>
-            <hr />
         </div>
     );
 }

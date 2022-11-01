@@ -1,10 +1,11 @@
 import Layout from "../../components/Layout";
+import styles from "../../styles/like.module.css";
 import LikerProfile from "../../components/LikerProfile";
 
 function Like({ data }) {
     return (
         <Layout>
-            <div>
+            <div className={styles.like}>
                 {data.map((d) => (
                     <LikerProfile data={d[0]} />
                 ))}
@@ -15,7 +16,7 @@ function Like({ data }) {
 
 export default Like;
 export async function getServerSideProps({ req }) {
-    const res = await fetch("https://smooon.vercel.app/api/likes", {
+    const res = await fetch("http://localhost:3000/api/likes", {
         method: "GET",
         withCredentials: true,
         headers: {

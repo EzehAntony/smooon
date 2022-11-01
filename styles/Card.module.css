@@ -38,11 +38,14 @@
   color: #000;
   font-weight: 700;
   margin: 0 0 5px 0;
+  text-transform: capitalize;
 }
 .down p {
   color: #919191;
   font-weight: 600;
   margin: 0 0 2px 0;
+  text-transform: capitalize;
+
 }
 .down h5 {
   color: #f62355;
