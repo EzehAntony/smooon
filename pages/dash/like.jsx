@@ -1,12 +1,23 @@
 import Layout from "../../components/Layout";
 import styles from "../../styles/like.module.css";
 import LikerProfile from "../../components/LikerProfile";
+import { useRouter } from "next/router";
 
 function Like({ data }) {
+    const router = useRouter();
     return (
         <Layout>
             <div className={styles.like}>
-                {data.map((d) => (
+                {data.length === 0 && (
+                    <div className={styles.prompt}>
+                        You have not liked any user! <br />
+                        <button onClick={(e) => {
+                            e.preventDefault()
+                            router.push("/dash/home")
+                        }}>View Users</button>
+                    </div>
+                )}
+                {data.reverse().map((d) => (
                     <LikerProfile data={d[0]} />
                 ))}
             </div>

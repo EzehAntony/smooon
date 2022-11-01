@@ -27,10 +27,8 @@ function Home({ data }) {
                         .filter((e) => {
                             if (input === "") {
                                 return e;
-                            } else if (data.users.includes(input)) {
-                                console.log(e)
+                            } else if (e.username.includes(input)) {
                                 return e;
-
                             }
                         })
                         .reverse()

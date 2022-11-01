@@ -1,14 +1,13 @@
 .likerProfile {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    
 }
 
 .userImg {
     width: 100%;
-    background-color: black;
     height: 60vh;
     min-height: 400px;
     max-height: 600px;
@@ -72,3 +71,4 @@
     width: 20px;
     padding-right: 5px;
 }
+

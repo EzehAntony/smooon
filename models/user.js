@@ -8,7 +8,7 @@ const userSchema = new Schema(
         password: { type: String, required: true },
         dob: { type: String, required: true },
         picture: { type: String, default: "" },
-        bio: { type: String, default: "I'm new here" },
+        bio: { type: String, default: "Hello everyone, I'm new here and I hope to meet someone good! " },
         education: { type: String, default: "" },
         interest: { type: Array },
         state: { type: String, required: true },

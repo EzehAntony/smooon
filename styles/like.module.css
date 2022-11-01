@@ -1,3 +1,26 @@
 .like {
     margin-bottom: 50px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.prompt {
+    color: #f62355;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.like button {
+    background-color: #f62355;
+    font-weight: 700;
+    border: 0;
+    padding: 15px 0;
+    margin: 5px 0;
+    color: white;
+    cursor: pointer;
 }

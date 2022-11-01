@@ -31,8 +31,7 @@ function LikerProfile({ data }) {
                 </p>
 
                 <p>
-                    <img src="/event.svg" alt="" />
-                    {data.dob} ({2022 - data.dob.split("-")[0]})
+                    <img src="/event.svg" alt="" />Age  {2022 - data.dob.split("-")[0]}
                 </p>
             </div>
         </div>
