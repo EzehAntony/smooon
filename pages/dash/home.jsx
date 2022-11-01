@@ -51,7 +51,7 @@ function Home({ data }) {
 export default Home;
 
 export async function getServerSideProps({ req }) {
-    const res = await fetch("http://localhost:3000/api/homeusers", {
+    const res = await fetch("https://smooon.vercel.app/api/homeusers", {
         method: "GET",
         withCredentials: true,
         headers: {

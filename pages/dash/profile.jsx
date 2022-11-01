@@ -68,7 +68,7 @@ function Profile({ data }) {
 export default Profile;
 
 export async function getServerSideProps({ req }) {
-    const res = await fetch(`http://localhost:3000/api/profile`, {
+    const res = await fetch(`https://smooon.vercel.app/api/profile`, {
         method: "GET",
         credentials: true,
         headers: {

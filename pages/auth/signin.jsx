@@ -26,7 +26,7 @@ const Signin = () => {
             setLoading(true);
             await axios({
                 method: "POST",
-                url: "http://localhost:3000/api/auth/login",
+                url: "https://smooon.vercel.app/api/auth/login",
                 data: {
                     username: input.username,
                     password: input.password,
