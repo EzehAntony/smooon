@@ -27,7 +27,7 @@ function Like({ data }) {
 
 export default Like;
 export async function getServerSideProps({ req }) {
-    const res = await fetch("https://smooon.vercel.app/api/likes", {
+    const res = await fetch("http://localhost:3000/api/likes", {
         method: "GET",
         withCredentials: true,
         headers: {

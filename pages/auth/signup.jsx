@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Signup = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    //input states
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
@@ -18,13 +20,16 @@ const Signup = () => {
         state: "",
         gender: "",
         dob: "",
+        picture: null,
         password: "",
         confirmPassword: "",
     });
 
+    //form submit function
     const submit = async (e) => {
-        console.log(input.gender);
         e.preventDefault();
+
+        //input verifications
         if (input.password !== input.confirmPassword) {
             toast.error("Passwords do not match!", {
                 autoClose: 2000,
@@ -40,27 +45,47 @@ const Signup = () => {
                 autoClose: 3000,
                 hideProgressBar: true,
             });
-        } else {
+        }
+        //on form verified
+        else {
             setLoading(true);
-            await axios({
-                method: "POST",
-                url: "https://smooon.vercel.app/api/auth/register",
-                data: input,
-            })
-                .then((res) => {
-                    setLoading(false);
-                    toast.success("Registered", {
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        onClose: () => {
-                            router.push("/auth/signin");
+            //configuring the data of the file
+            const data = new FormData();
+            data.append("file", input.picture);
+            data.append("upload_preset", "uploads");
+
+            //posting the configured data to the coud
+            await axios
+                .post("https://api.cloudinary.com/v1_1/dq1m3buf0/image/upload", data)
+                .then(async (res) => {
+                    await axios({
+                        method: "POST",
+                        url: "http://localhost:3000/api/auth/register",
+                        data: {
+                            firstname: input.firstname,
+                            lastname: input.lastname,
+                            username: input.username,
+                            state: input.state,
+                            gender: input.gender,
+                            dob: input.dob,
+                            picture: res.data.url,
+                            password: input.password,
+                            confirmPassword: input.confirmPassword,
                         },
+                    }).then(() => {
+                        setLoading(false);
+                        toast.success("Registered", {
+                            autoClose: 2000,
+                            hideProgressBar: true,
+                            onClose: () => {
+                                router.push("/auth/signin");
+                            },
+                        });
                     });
                 })
                 .catch((err) => {
-                    console.log(err);
                     setLoading(false);
-                    toast.error(`${err.response.data}`, {
+                    toast.error(`${err.message}`, {
                         autoClose: 2000,
                         hideProgressBar: true,
                     });
@@ -134,6 +159,13 @@ const Signup = () => {
                         placeholder="Confirm password"
                         value={input.confirmPassword.toLowerCase().trim()}
                         onChange={(e) => setInput((prev) => ({ ...prev, confirmPassword: e.target.value }))}
+                    />
+                    <br />
+                    <input
+                        required
+                        type="file"
+                        name=""
+                        onChange={(e) => setInput((prev) => ({ ...prev, picture: e.target.files[0] }))}
                     />
                     <p
                         className={styles.login}

@@ -1,8 +1,8 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 div,
@@ -15,27 +15,27 @@ h4,
 h5,
 h6,
 div {
-  user-select: none;
-  -webkit-user-drag: none;
-  margin: 0;
-  padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: light;
-  }
-  body {
-    color: black;
-    background: white;
-  }
+    html {
+        color-scheme: light;
+    }
+    body {
+        color: black;
+        background: white;
+    }
 }

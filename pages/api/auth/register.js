@@ -22,6 +22,7 @@ const handler = async (req, res) => {
                         state: req.body.state,
                         dob: req.body.dob,
                         gender: req.body.gender,
+                        picture: req.body.picture,
                     });
 
                     const { password, ...others } = await newUser._doc;

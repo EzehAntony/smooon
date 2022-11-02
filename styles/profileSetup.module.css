@@ -42,6 +42,10 @@
   margin-bottom: 50px;
 }
 
+.image input {
+  display: none;
+}
+
 .image img {
   border-radius: 50%;
   width: 100%;
@@ -54,6 +58,7 @@
   width: 35px;
   bottom: 0;
   right: 20px;
+  cursor: pointer;
 }
 
 .inputGroup {
@@ -95,9 +100,9 @@
 .inputGroup input:focus + .label .name,
 .inputGroup input:valid + .label .name {
   color: #f62355;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
-  transform: translateY(-100%);
+  transform: translateY(-80%);
 }
 
 .gender {

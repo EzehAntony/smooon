@@ -5,7 +5,8 @@ function LikerProfile({ data }) {
     return (
         <div className={style.likerProfile}>
             <div className={style.userImg}>
-                <img src="/girl.jpg" alt="" />
+                <img src={data.picture} alt="" />
+                <img src={data.picture} alt="" />
             </div>
 
             <div className={style.info}>
@@ -31,7 +32,8 @@ function LikerProfile({ data }) {
                 </p>
 
                 <p>
-                    <img src="/event.svg" alt="" />Age  {2022 - data.dob.split("-")[0]}
+                    <img src="/event.svg" alt="" />
+                    Age {2022 - data.dob.split("-")[0]}
                 </p>
             </div>
         </div>

@@ -36,6 +36,7 @@ function Home({ data }) {
                             <Card
                                 key={k}
                                 id={d._id}
+                                picture={d.picture}
                                 name={d.username}
                                 state={d.state}
                                 age={d.dob}
@@ -51,7 +52,7 @@ function Home({ data }) {
 export default Home;
 
 export async function getServerSideProps({ req }) {
-    const res = await fetch("https://smooon.vercel.app/api/homeusers", {
+    const res = await fetch("http://localhost:3000/api/homeusers", {
         method: "GET",
         withCredentials: true,
         headers: {

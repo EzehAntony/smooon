@@ -22,18 +22,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
+    height: 500px;
     box-shadow: 5px 9px 20px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     padding: 20px;
     max-width: 400px;
-    height: 550px;
     background-color: #ffffffd8;
 }
 
 .registerModal h2 {
     color: #f62355;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
 }
 
@@ -46,19 +45,29 @@
 }
 .registerModal form {
     width: 100%;
-    height: auto;
+    height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-
 
 .registerModal form input {
     width: 40%;
-    height: 40px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
     border: none;
     border: 1px solid #00000033;
     border-radius: 8px;
     padding: 10px;
     outline-color: #f62355;
+}
+
+.registerModal form input:nth-of-type(9) {
+    width: 90%;
 }
 
 .registerModal form input::placeholder {
@@ -104,18 +113,11 @@
         display: none;
     }
     
-    .registerModal form{
-        width: 100%;
-        height: inherit;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+    .registerModal form input {
+        width: 40%;
+        margin: 5px;
+        padding: 8px;
     }
 
-    .registerModal form input {
-        height: 25px;
-        width: 36%;
-        margin: 5px;
-    }
+
 }

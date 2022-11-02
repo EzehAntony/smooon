@@ -9,7 +9,8 @@ function Profile({ data }) {
         <Layout>
             <div className={style.profile}>
                 <div className={style.userImg}>
-                    <img src="/girl.jpg" alt="" />
+                    <img src={data.picture} alt="" />
+                    <img src={data.picture} alt="" />
                 </div>
 
                 <div className={style.action}>
@@ -19,7 +20,7 @@ function Profile({ data }) {
 
                     <button
                         onClick={() => {
-                            router.push("/profilesetup");
+                            router.push("/dash/profilesetup");
                         }}
                     >
                         <img src="/edit.svg" alt="" />
@@ -30,7 +31,7 @@ function Profile({ data }) {
                 <div className={style.info}>
                     <h4>@{data.username}</h4>
                     <p>
-                    <img src="/badge.svg" alt="" /> {data.firstname} {data.lastname}
+                        <img src="/badge.svg" alt="" /> {data.firstname} {data.lastname}
                     </p>
                     <p>
                         <img src="/pin.svg" alt="" />
@@ -68,7 +69,7 @@ function Profile({ data }) {
 export default Profile;
 
 export async function getServerSideProps({ req }) {
-    const res = await fetch(`https://smooon.vercel.app/api/profile`, {
+    const res = await fetch(`http://localhost:3000/api/profile`, {
         method: "GET",
         credentials: true,
         headers: {

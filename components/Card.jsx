@@ -3,14 +3,14 @@ import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Card({ name, state, age, id }) {
+function Card({ name, state, age, id, picture }) {
     const [liked, setLiked] = useState(false);
     const [loggedUser, setLoggedUser] = useState({});
 
     const like = async (e) => {
         e.preventDefault();
         await axios({
-            url: "https://smooon.vercel.app/api/addlikes",
+            url: "http://localhost:3000/api/addlikes",
             method: "PUT",
             data: {
                 id: id,
@@ -28,7 +28,7 @@ function Card({ name, state, age, id }) {
     const fetchData = async () => {
         await axios({
             method: "GET",
-            url: "https://smooon.vercel.app/api/profile",
+            url: "http://localhost:3000/api/profile",
             withCredentials: true,
         })
             .then((res) => {
@@ -70,7 +70,7 @@ function Card({ name, state, age, id }) {
         >
             <div className={style.card}>
                 <div className={style.up}>
-                    <img src="/henessy.jpg" alt="" />
+                    <img src={picture} alt="" />
                     <div className={style.action}>
                         {liked ? (
                             <img src="/rheart.svg" alt="" onClick={(e) => like(e)} />
@@ -84,10 +84,10 @@ function Card({ name, state, age, id }) {
                 <div className={style.down}>
                     <h3 className="name">{name}</h3>
                     <p className="location">{state}</p>
-                    <h5 className="age">age:
-                    {
-                    (2022 - age.split("-")[0])
-                    }</h5>
+                    <h5 className="age">
+                        Age:
+                        {2022 - age.split("-")[0]}
+                    </h5>
                 </div>
             </div>
         </TinderCard>
