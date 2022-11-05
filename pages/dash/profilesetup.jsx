@@ -96,7 +96,7 @@ function Profilesetup({ data }) {
                     <img src="/badge.svg" alt="" />
                     <input
                         type="text"
-                        value={input.username}
+                        value={input.username.toLowerCase()}
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
                         placeholder=" Enter Username"
                     />
@@ -200,20 +200,6 @@ function Profilesetup({ data }) {
                             name=""
                             id=""
                         />
-                    </label>
-                </div>
-
-                {/* Gender */}
-                <div className={styles.group}>
-                    <span>Gender</span>
-                    <label>
-                        <img src="/female.svg" alt="" />
-
-                        <select name="" id="">
-                            <option value=""></option>
-                            <option value="m">Male</option>
-                            <option value="f">Female</option>
-                        </select>
                     </label>
                 </div>
             </div>
