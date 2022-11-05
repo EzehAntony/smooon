@@ -71,7 +71,6 @@ export default Profile;
 export async function getServerSideProps({ req }) {
     const res = await fetch(`http://localhost:3000/api/profile`, {
         method: "GET",
-        credentials: true,
         headers: {
             "content-type": "application/json",
             cookie: req.headers.cookie,

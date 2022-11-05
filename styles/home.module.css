@@ -46,8 +46,8 @@
 
  .main {
   width: 80%;
-  min-height: 400px;
   max-width: 400px;
+  height: 450px;
   margin: auto;
   position: relative;
 }

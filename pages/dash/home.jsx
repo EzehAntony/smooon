@@ -36,11 +36,13 @@ function Home({ data }) {
                             <Card
                                 key={k}
                                 id={d._id}
+                                bio={d.bio}
                                 picture={d.picture}
                                 name={d.username}
                                 state={d.state}
                                 age={d.dob}
                                 styles={d.styles}
+                                gender={d.gender}
                                 user={user._id}
                             />
                         ))}

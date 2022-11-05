@@ -3,7 +3,7 @@ import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Card({ name, state, age, id, picture }) {
+function Card({ name, state, bio, age, id, picture, gender }) {
     const [liked, setLiked] = useState(false);
     const [loggedUser, setLoggedUser] = useState({});
 
@@ -33,7 +33,6 @@ function Card({ name, state, age, id, picture }) {
         })
             .then((res) => {
                 setLoggedUser(res.data);
-                console.log(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -82,12 +81,26 @@ function Card({ name, state, age, id, picture }) {
                     </div>
                 </div>
                 <div className={style.down}>
-                    <h3 className="name">{name}</h3>
-                    <p className="location">{state}</p>
-                    <h5 className="age">
-                        Age:
-                        {2022 - age.split("-")[0]}
-                    </h5>
+                    <div className={style.groups}>
+                        <div className={style.group}>
+                            <img src="/badge.svg" alt="" />
+                            <h3 className={style.name}>{name}</h3>
+                        </div>
+                        <div className={style.group}>
+                            <img src="/pin.svg" alt="" />
+                            <h4 className={style.bio}>{state}</h4>
+                        </div>
+                        <div className={style.group}>
+                            {gender === "m" ? <img src="/male.svg" alt="" /> : <img src="/female.svg" alt="" />}
+                            <h5 className={style.gender}> {gender === "m" ? "Male" : "Female"}</h5>
+                        </div>
+                        <div className={style.group}>
+                            <h5 className={style.age}>
+                                Age: <span> {2022 - age.split("-")[0]}</span>
+                            </h5>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </TinderCard>

@@ -1,4 +1,4 @@
-import dbConnect from "../../../util/mongodb";
+ import dbConnect from "../../../util/mongodb";
 import bcryptjs from "bcryptjs";
 import user from "../../../models/user";
 import { setCookie } from "cookies-next";

@@ -1,164 +1,241 @@
 .profileSetup {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding-bottom: 100px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    max-width: 800;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 .profileSetup header {
-  height: 60px;
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+    height: 60px;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .profileSetup > p {
-  font-size: 20px;
-  font-weight: 700;
-  text-transform: capitalize;
-  color: #f62355;
-  margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #f62355;
+    margin: 0 0 20px 0;
 }
 
 .profileSetup header img {
-  width: 30px;
-  position: absolute;
-  left: 20px;
-  cursor: pointer;
+    width: 30px;
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
 }
 
 .image {
-  width: 200px;
-  height: 200px;
-  background-color: yellow;
-  position: relative;
-  border-radius: 50%;
-  margin-bottom: 50px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    margin-bottom: 50px;
 }
 
 .image input {
-  display: none;
+    background-color: #b8b8b9;
+    border-radius: 50%;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    bottom: 0;
+    right: 20px;
+    cursor: pointer;
+    opacity: 0;
 }
 
 .image img {
-  border-radius: 50%;
-  width: 100%;
+    border-radius: 50%;
+    width: 100%;
 }
 
 .image img:nth-of-type(2) {
-  background-color: #b8b8b9;
-  border-radius: 50%;
-  position: absolute;
-  width: 35px;
-  bottom: 0;
-  right: 20px;
-  cursor: pointer;
+    background-color: #b8b8b9;
+    border-radius: 50%;
+    position: absolute;
+    width: 35px;
+    bottom: 0;
+    right: 20px;
 }
 
-.inputGroup {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  height: 60px;
-  width: 90%;
-  border: 1px solid #7a7a7a;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  max-width: 700px;
-  margin-bottom: 20px;
+.info {
+    width: 90%;
+    max-width: 700px;
+    text-transform: capitalize;
+    position: relative;
 }
 
-.inputGroup input {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  outline: 0;
-  position: absolute;
-  font-weight: 600;
-  color: #7a7a7a;
-  bottom: -15px;
-  background-color: transparent;
+.info h4 {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    width: inherit;
 }
 
-.inputGroup .name {
-  position: absolute;
-  left: 0;
-  top: 25%;
-  font-weight: 600;
-  font-size: 15px;
-  transition: 0.8s;
-  text-transform: capitalize;
+.info img {
+    width: 20px;
+    margin-right: 5px;
 }
 
-.inputGroup input:focus + .label .name,
-.inputGroup input:valid + .label .name {
-  color: #f62355;
-  font-size: 15px;
-  font-weight: 700;
-  transform: translateY(-80%);
+.info input:nth-of-type(1) {
+    border: 0;
+    height: 30px;
+    min-width: 200px;
+    outline: none;
+    border-bottom: 2px solid #acacac;
 }
 
-.gender {
-  width: 90%;
-  border: 0;
-  max-width: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-bottom: 2px solid #b8b8b9;
+.info input::placeholder {
+    text-transform: capitalize;
+}
+.event,
+.education,
+.likes {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #acacac;
+    text-transform: capitalize;
 }
 
-.gender h1 {
-  font-size: 15px;
-  align-self: flex-start;
+.event img,
+.education img,
+.likes img {
+    width: 20px;
+    margin-right: 5px;
 }
 
-.gender main {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px 0;
+.event {
+    position: relative;
+    padding-bottom: 40px;
+    width: 90%;
+    max-width: 700px;
 }
 
-.gender main p {
-  font-weight: 500;
-  font-size: 15px;
+.event::after {
+    content: "";
+    height: 4px;
+    background-color: #f62355;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-radius: 20px;
 }
 
-.gender div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 30px;
+.bio {
+    width: 90%;
+    max-width: 700px;
+    font-size: 13px;
+    color: #acacac;
+    font-weight: 600;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.gender input {
-  width: 20px;
-  height: 20px;
+.bio textarea {
+    margin-top: 10px;
+    padding: 5px;
+    height: 80px;
+    border: 0;
+    resize: none;
+    outline: none;
+    background-color: #f623541e;
+    font-weight: 700;
 }
 
-.gender input {
-  accent-color: #f62355;
+.profileSetup .groups {
+    width: 90%;
+    max-width: 700px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileSetup .group {
+    width: 49%;
+    font-size: 13px;
+    color: #acacac;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.group input {
+    width: 100%;
+    height: 25px;
+    border: 0;
+    border-bottom: 2px solid #acacac;
+    margin: 10px 0;
+    outline: none;
+    padding: 0 5px;
+}
+
+.group label {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group span {
+    margin: 0 0 0 15px;
+}
+
+.group img {
+    width: 15px;
+}
+
+.group select {
+    width: 100%;
+    height: 25px;
+    border: 0;
+    border-bottom: 2px solid #acacac;
+    margin: 10px 0;
+    outline: none;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.groups select option {
+    background-color: #f62355;
+    color: white;
+    font-weight: 700;
+    height: 10px;
 }
 
 .continue {
-  width: 90%;
-  max-width: 700px;
-  padding: 15px 0;
-  background-color: #f62355;
-  border: 0;
-  color: white;
-  font-weight: 600;
-  border-radius: 50px;
-  position: absolute;
-  bottom: 20px;
+    background-color: #f62355;
+    padding: 10px 20px;
+    border: 0;
+    outline: none;
+    color: white;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
