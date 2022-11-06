@@ -227,17 +227,17 @@ function Profilesetup({ data }) {
                     <form action="" onSubmit={(e)=> e.preventDefault()}>
                         <div>
                         <label htmlFor="">Old Password</label>
-                        <input type="text" />
+                        <input type="password" placeholder="*****" />
                         </div>
 
                         <div>
                         <label htmlFor="">New Password</label>
-                        <input type="text" />
+                        <input type="password" placeholder="*****" />
                         </div>
 
                         <div>
                         <label htmlFor="">Confirm New Password</label>
-                        <input type="text" />
+                        <input type="password" placeholder="*****" />
                         </div>
 
                     <div>
