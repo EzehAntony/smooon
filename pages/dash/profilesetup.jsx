@@ -20,6 +20,7 @@ function Profilesetup({ data }) {
         confirmPassword: "",
     });
     const [loading, setLoading] = useState(false);
+    const [modal,setModal] = useState(false)
 
     const router = useRouter();
     const profileImg = () => {};
@@ -70,6 +71,10 @@ function Profilesetup({ data }) {
                 });
             });
     };
+
+    const openModal = () => {
+
+    }
 
     return (
         <div className={styles.profileSetup}>
@@ -173,7 +178,7 @@ function Profilesetup({ data }) {
                 </div>
 
                 {/* Password */}
-                <div className={styles.group}>
+                {/* <div className={styles.group}>
                     <span>Password</span>
                     <label>
                         <img src="/female.svg" alt="" />
@@ -185,10 +190,10 @@ function Profilesetup({ data }) {
                             id=""
                         />
                     </label>
-                </div>
+                </div> */}
 
                 {/* Confirm password */}
-                <div className={styles.group}>
+                {/* <div className={styles.group}>
                     <span>Confirm password</span>
                     <label>
                         <img src="/female.svg" alt="" />
@@ -201,13 +206,58 @@ function Profilesetup({ data }) {
                             id=""
                         />
                     </label>
-                </div>
+                </div> */}
+
+                
             </div>
+
+            <button className={styles.continue} onClick={()=> setModal(true)}>
+                Change Password?
+            </button>
 
             <button className={styles.continue} onClick={(e) => submit(e)}>
                 {!loading && "Update"}
                 <ClapSpinner frontColor={"white"} size={15} loading={loading} />
             </button>
+
+            <div style={{display: modal ? "flex":"none" }} className={styles.modal}>
+                <div className={modal ? `${styles.modalbox} ${styles.animateIn}`: `${styles.modalbox} ${styles.modalbox}`}>
+                    <h3>Change Password</h3>
+
+                    <form action="" onSubmit={(e)=> e.preventDefault()}>
+                        <div>
+                        <label htmlFor="">Old Password</label>
+                        <input type="text" />
+                        </div>
+
+                        <div>
+                        <label htmlFor="">New Password</label>
+                        <input type="text" />
+                        </div>
+
+                        <div>
+                        <label htmlFor="">Confirm New Password</label>
+                        <input type="text" />
+                        </div>
+
+                    <div>
+                    <div>
+                        <button className={styles.continue} onClick={openModal()}>
+                            Change Password
+                         </button>  
+                    </div>
+                    <div>
+                        <button className={styles.continue} onClick={()=> setModal(false)}>
+                            Cancel
+                         </button>  
+                    </div>
+                    </div>
+
+                        
+                    </form>
+                </div>
+            </div>
+
 
             <ToastContainer />
         </div>
