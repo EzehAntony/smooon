@@ -220,25 +220,46 @@
     cursor: pointer;
 }
 
-.groups select option {
-    background-color: #f62355;
-    color: white;
-    font-weight: 700;
-    height: 10px;
-}
-
 .continue {
     background-color: #f62355;
-    padding: 10px 20px;
     border: 0;
     outline: none;
     color: white;
-    margin-top: 20px;
+    width: 200px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    height: 40px;
+    transition: .4s;
 }
+
+.continue:hover {
+    color: black;
+}
+
+.changePassword {
+    cursor: pointer;
+    font-weight: 700;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 5px 10px;
+    background-color: #acacac;
+}
+
+.changePassword:hover {
+    color: black;
+}
+
+.groupButton {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    width: 80%;
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -246,35 +267,55 @@
     width: 100%;
     height: 100%;
     z-index: 100;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.671);
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .modalbox {
     width: 80%;
     height: auto;
-    padding-bottom: 20px;
     background-color: white;
     border-radius: 10px;
-    max-width: 550px;
+    max-width: 400px;
     transition: 0.4s;
-    transform:scale(0.05);
+    transform: scale(0.05);
     opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
 }
 .modalbox h3 {
     text-align: center;
     margin-top: 20px;
+    color: #f62355;
+    font-weight: 700;
+    font-size: 20px;
 }
 .modalbox form {
-    margin:30px auto;
     width: 100%;
-    height: auto;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.modalbox form div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .modalbox label {
-    margin: 0px 20px;
-    width: 90%;
+    width: 100%;
+    font-size: 13px;
+    color: #acacac;
+    font-weight: 600;
 }
 .modalbox form > div:last-child {
     display: flex;
@@ -283,58 +324,58 @@
     flex-flow: column wrap;
 }
 .modalbox input {
-    display: block;
-    background: none;
+    width: 100%;
+    height: 30px;
+    border: 0;
+    border-bottom: 2px solid #acacac;
+    margin: 10px 0;
     outline: none;
-    border: none;
-    border-bottom: 1px solid black;
-    margin: 15px auto;
-    width: 85%;
-
 }
+
+.modalbox input::placeholder {
+    color: black;
+}
+
 .modalbox.animateIn {
-	-webkit-animation-name: animateIn;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: forwards;
-  animation-name: animateIn;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-  animation-timing-function: infinite;
+    -webkit-animation-name: animateIn;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: animateIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: infinite;
 }
-
 
 @keyframes animateIn {
-	0% {
-		transform: scale(0.05);
+    0% {
+        transform: scale(0.05);
         opacity: 0;
-	} 
+    }
 
-	80% {
-		transform: scale(1.2);
+    80% {
+        transform: scale(1.1);
         opacity: 1;
-	}
+    }
 
-	100% {
-		transform: scale(1);
+    100% {
+        transform: scale(1);
         opacity: 1;
-	}
+    }
 }
-
 
 @-webkit-keyframes animateIn {
-	0% {
-		transform: scale(0.05);
+    0% {
+        transform: scale(0.05);
         opacity: 0;
-	} 
+    }
 
-	80% {
-		transform: scale(1.2);
+    80% {
+        transform: scale(1.2);
         opacity: 1;
-	}
+    }
 
-	100% {
-		transform: scale(1);
+    100% {
+        transform: scale(1);
         opacity: 1;
-	}
+    }
 }
-

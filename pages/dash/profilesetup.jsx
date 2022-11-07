@@ -16,14 +16,31 @@ function Profilesetup({ data }) {
         gender: data.gender,
         dob: data.dob,
         picture: data.picture,
-        password: data.password,
+        password: "",
+        newPassword: "",
         confirmPassword: "",
     });
     const [loading, setLoading] = useState(false);
-    const [modal,setModal] = useState(false)
+    const [passwordLoading, setPasswordLoading] = useState(false);
+    const [modal, setModal] = useState(false);
 
     const router = useRouter();
     const profileImg = () => {};
+
+    const clearPasswordInput = () => {
+        setInput((prev) => ({
+            ...prev,
+            password: "",
+        }));
+        setInput((prev) => ({
+            ...prev,
+            newPassword: "",
+        }));
+        setInput((prev) => ({
+            ...prev,
+            confirmPassword: "",
+        }));
+    };
 
     const submit = async (e) => {
         e.preventDefault();
@@ -72,9 +89,55 @@ function Profilesetup({ data }) {
             });
     };
 
-    const openModal = () => {
+    const changePasswordSubmit = async (e) => {
+        e.preventDefault();
+        if (input.newPassword !== input.confirmPassword) {
+            toast.warning("New password and Confirm new password do not match!", {
+                autoClose: 2000,
+                hideProgressBar: true,
+                
+            });
+        } else {
+            setPasswordLoading(true);
+            await axios({
+                url: "http://localhost:3000/api/updatepassword",
+                method: "PUT",
+                withCredentials: true,
+                data: {
+                    enteredPassword: input.password,
+                    newPassword: input.newPassword,
+                },
+            })
+                .then((res) => {
+                    setPasswordLoading(false);
 
-    }
+                    toast.success(`${res.data}`, {
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                        onClose: () => {
+                            clearPasswordInput();
+                            setModal(false);
+                        },
+                    });
+                })
+                .catch((err) => {
+                    setPasswordLoading(false);
+
+                    var e;
+                    if (err.response.status !== 500) {
+                        e = err.response.data;
+                    } else {
+                        e = "Network error";
+                    }
+                    toast.error(e, {
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                    });
+                });
+        }
+    };
+
+    const openModal = () => {};
 
     return (
         <div className={styles.profileSetup}>
@@ -177,87 +240,82 @@ function Profilesetup({ data }) {
                     </label>
                 </div>
 
-                {/* Password */}
-                {/* <div className={styles.group}>
-                    <span>Password</span>
-                    <label>
-                        <img src="/female.svg" alt="" />
-                        <input
-                            value={input.password}
-                            type="password"
-                            onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
-                            name=""
-                            id=""
-                        />
-                    </label>
-                </div> */}
-
-                {/* Confirm password */}
-                {/* <div className={styles.group}>
-                    <span>Confirm password</span>
-                    <label>
-                        <img src="/female.svg" alt="" />
-
-                        <input
-                            type="password"
-                            value={input.value}
-                            onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
-                            name=""
-                            id=""
-                        />
-                    </label>
-                </div> */}
-
-                
+                <h6 className={styles.changePassword} onClick={() => setModal(true)}>
+                    Click here to Password
+                </h6>
             </div>
 
-            <button className={styles.continue} onClick={()=> setModal(true)}>
-                Change Password?
-            </button>
+            <div className={styles.groupButton}>
+                <button className={styles.continue} onClick={(e) => submit(e)}>
+                    {!loading && "Update"}
+                    <ClapSpinner frontColor={"white"} size={15} loading={loading} />
+                </button>
+            </div>
 
-            <button className={styles.continue} onClick={(e) => submit(e)}>
-                {!loading && "Update"}
-                <ClapSpinner frontColor={"white"} size={15} loading={loading} />
-            </button>
-
-            <div style={{display: modal ? "flex":"none" }} className={styles.modal}>
-                <div className={modal ? `${styles.modalbox} ${styles.animateIn}`: `${styles.modalbox} ${styles.modalbox}`}>
+            <div style={{ display: modal ? "flex" : "none" }} className={styles.modal}>
+                <div
+                    className={
+                        modal ? `${styles.modalbox} ${styles.animateIn}` : `${styles.modalbox} ${styles.modalbox}`
+                    }
+                >
                     <h3>Change Password</h3>
 
-                    <form action="" onSubmit={(e)=> e.preventDefault()}>
+                    <form onSubmit={(e) => changePasswordSubmit(e)}>
                         <div>
-                        <label htmlFor="">Old Password</label>
-                        <input type="password" placeholder="*****" />
+                            <label>Current Password</label>
+                            <input
+                                required
+                                type="password"
+                                value={input.password}
+                                onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
+                                placeholder="*****"
+                            />
                         </div>
 
                         <div>
-                        <label htmlFor="">New Password</label>
-                        <input type="password" placeholder="*****" />
+                            <label>New Password</label>
+                            <input
+                                required
+                                type="password"
+                                value={input.newPassword}
+                                onChange={(e) => setInput((prev) => ({ ...prev, newPassword: e.target.value }))}
+                                placeholder="*****"
+                            />
                         </div>
 
                         <div>
-                        <label htmlFor="">Confirm New Password</label>
-                        <input type="password" placeholder="*****" />
+                            <label>Confirm New Password</label>
+                            <input
+                                required
+                                type="password"
+                                value={input.confirmPassword}
+                                onChange={(e) => setInput((prev) => ({ ...prev, confirmPassword: e.target.value }))}
+                                placeholder="*****"
+                            />
                         </div>
 
-                    <div>
-                    <div>
-                        <button className={styles.continue} onClick={openModal()}>
-                            Change Password
-                         </button>  
-                    </div>
-                    <div>
-                        <button className={styles.continue} onClick={()=> setModal(false)}>
-                            Cancel
-                         </button>  
-                    </div>
-                    </div>
-
-                        
+                        <div>
+                            <div>
+                                <button className={styles.continue} onClick={openModal()}>
+                                    {!passwordLoading && "Change Password"}
+                                    {passwordLoading && <ClapSpinner />}
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                    className={styles.continue}
+                                    onClick={() => {
+                                        setModal(false);
+                                        clearPasswordInput();
+                                    }}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
-
 
             <ToastContainer />
         </div>
