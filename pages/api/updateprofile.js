@@ -21,6 +21,7 @@ export default async function handler(req, res) {
                                     bio: bio,
                                     gender: gender,
                                     state: state,
+                                    picture: picture,
                                 },
                             }
                         );

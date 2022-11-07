@@ -37,9 +37,13 @@
 .image {
     width: 200px;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     border-radius: 50%;
     margin-bottom: 50px;
+    background-color: red;
 }
 
 .image input {
@@ -54,9 +58,12 @@
     opacity: 0;
 }
 
-.image img {
-    border-radius: 50%;
+.image img:nth-of-type(1) {
     width: 100%;
+    height: inherit;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .image img:nth-of-type(2) {
@@ -100,6 +107,7 @@
 .info input::placeholder {
     text-transform: capitalize;
 }
+
 .event,
 .education,
 .likes {
@@ -158,8 +166,9 @@
     border: 0;
     resize: none;
     outline: none;
-    background-color: #f623541e;
+    background-color: #0000002d;
     font-weight: 700;
+    border-radius: 10px;
 }
 
 .profileSetup .groups {
@@ -220,23 +229,46 @@
     cursor: pointer;
 }
 
+.interestArray {
+    background-color: #0000002d;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 50px;
+}
+
+.interestArray p {
+    padding: 5px 10px;
+    background-color: black;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 10px;
+}
+
+.interestArray h4 {
+    text-align: center;
+    width: 100%;
+}
 .continue {
     background-color: #f62355;
     border: 0;
     outline: none;
     color: white;
-    width: 200px;
+    width: 100%;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     height: 40px;
-    transition: .4s;
-}
-
-.continue:hover {
-    color: black;
+    transition: 0.4s;
 }
 
 .changePassword {

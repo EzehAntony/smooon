@@ -47,7 +47,14 @@ const Signin = () => {
                     setLoading(false);
                 })
                 .catch((error) => {
-                    toast(`${error.response?.data ? error.response.data : "unexpected server error"}`, {
+                    var e;
+
+                    if (error.response.status === 500) {
+                        e = "Network Error";
+                    } else {
+                        e = res.response.data;
+                    }
+                    toast(`${e}`, {
                         type: "error",
                         autoClose: 2000,
                         hideProgressBar: true,

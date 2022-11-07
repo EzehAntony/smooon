@@ -2,9 +2,10 @@ import styles from "../../styles/profileSetup.module.css";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
-import { ClapSpinner } from "react-spinners-kit";
+import { ClapSpinner, DominoSpinner } from "react-spinners-kit";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
 
 function Profilesetup({ data }) {
     const [input, setInput] = useState({
@@ -16,10 +17,14 @@ function Profilesetup({ data }) {
         gender: data.gender,
         dob: data.dob,
         picture: data.picture,
+        newPicture: "",
         password: "",
         newPassword: "",
         confirmPassword: "",
+        interestString: "",
+        interestArray: [],
     });
+
     const [loading, setLoading] = useState(false);
     const [passwordLoading, setPasswordLoading] = useState(false);
     const [modal, setModal] = useState(false);
@@ -44,49 +49,112 @@ function Profilesetup({ data }) {
 
     const submit = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        await axios({
-            url: "http://localhost:3000/api/updateprofile",
-            method: "POST",
-            withCredentials: true,
-            data: {
-                firstname: input.firstname,
-                lastname: input.lastname,
-                username: input.username,
-                bio: input.bio,
-                state: input.state,
-                gender: input.gender,
-                dob: input.dob,
-                picture: input.picture,
-                password: input.password,
-                confirmPassword: "",
-            },
-        })
-            .then((res) => {
-                setLoading(false);
-                toast.success(`${res.data}`, {
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    onClose: () => {
-                        router.push("/dash/profile");
-                    },
-                });
+        if (input.newPicture === "") {
+            setLoading(true);
+            await axios({
+                url: "http://localhost:3000/api/updateprofile",
+                method: "POST",
+                withCredentials: true,
+                data: {
+                    firstname: input.firstname,
+                    lastname: input.lastname,
+                    username: input.username,
+                    bio: input.bio,
+                    state: input.state,
+                    gender: input.gender,
+                    dob: input.dob,
+                    picture: input.picture,
+                    password: input.password,
+                    confirmPassword: "",
+                },
             })
-            .catch((err) => {
-                console.log(err);
-                setLoading(false);
-                var e;
-                if (err.response.status !== 500) {
-                    e = err.response.data;
-                } else {
-                    e = "Network error";
-                }
+                .then((res) => {
+                    setLoading(false);
+                    toast.success(`${res.data}`, {
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        onClose: () => {
+                            router.push("/dash/profile");
+                        },
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setLoading(false);
+                    var e;
+                    if (err.response.status !== 500) {
+                        e = err.response.data;
+                    } else {
+                        e = "Network error";
+                    }
 
-                toast.error(`${e}`, {
+                    toast.error(`${e}`, {
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                    });
+                });
+        } else {
+            setLoading(true);
+            const imageData = new FormData();
+            imageData.append("file", input.newPicture);
+            imageData.append("upload_preset", "uploads");
+
+            //sending the data
+
+            try {
+                await axios
+                    .post("https://api.cloudinary.com/v1_1/dq1m3buf0/image/upload", imageData)
+                    .then(async (res) => {
+                        await axios({
+                            url: "http://localhost:3000/api/updateprofile",
+                            method: "POST",
+                            withCredentials: true,
+                            data: {
+                                firstname: input.firstname,
+                                lastname: input.lastname,
+                                username: input.username,
+                                bio: input.bio,
+                                state: input.state,
+                                gender: input.gender,
+                                dob: input.dob,
+                                picture: res.data.url,
+                            },
+                        })
+                            .then((res) => {
+                                setLoading(false);
+                                toast.success(`${res.data}`, {
+                                    autoClose: 2000,
+                                    hideProgressBar: true,
+                                    onClose: () => {
+                                        router.push("/dash/profile");
+                                    },
+                                });
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                setLoading(false);
+                                var e;
+                                if (err.response.status !== 500) {
+                                    e = err.response.data;
+                                } else {
+                                    e = "Network error";
+                                }
+
+                                toast.error(`${e}`, {
+                                    autoClose: 2000,
+                                    hideProgressBar: true,
+                                });
+                            });
+                    });
+            } catch (error) {
+                setLoading(false);
+
+                toast.error("something went wrong", {
                     autoClose: 2000,
                     hideProgressBar: true,
                 });
-            });
+            }
+        }
     };
 
     const changePasswordSubmit = async (e) => {
@@ -95,7 +163,6 @@ function Profilesetup({ data }) {
             toast.warning("New password and Confirm new password do not match!", {
                 autoClose: 2000,
                 hideProgressBar: true,
-                
             });
         } else {
             setPasswordLoading(true);
@@ -152,13 +219,16 @@ function Profilesetup({ data }) {
             </header>
 
             <p>profile setup</p>
-
             <div className={styles.image}>
-                <img src="/henessy.jpg" alt="" />
+                <img src={data.picture} alt="" />
                 <img src="/add.svg" alt="" onClick={profileImg()} />
-                <input type="file" name="" id="file" />
+                <input
+                    type="file"
+                    onChange={(e) => setInput((prev) => ({ ...prev, newPicture: e.target.files[0] }))}
+                    name=""
+                    id="file"
+                />
             </div>
-
             <div className={styles.info}>
                 <div className={styles.education}>
                     <img src="/badge.svg" alt="" />
@@ -170,9 +240,7 @@ function Profilesetup({ data }) {
                     />
                 </div>
             </div>
-
             {/* Bio */}
-
             <div className={styles.bio}>
                 <span>Bio</span>
                 <textarea
@@ -182,9 +250,7 @@ function Profilesetup({ data }) {
                     maxLength={200}
                 />
             </div>
-
             <div className={styles.event}></div>
-
             <div className={styles.groups}>
                 {/* Firstname */}
                 <div className={styles.group}>
@@ -198,7 +264,6 @@ function Profilesetup({ data }) {
                         />
                     </label>
                 </div>
-
                 {/* Lastname */}
                 <div className={styles.group}>
                     <span>Lastname</span>
@@ -212,21 +277,18 @@ function Profilesetup({ data }) {
                         />
                     </label>
                 </div>
-
-                {/* Interest */}
+                {/* Interest string */}
                 <div className={styles.group}>
                     <span>Interest</span>
                     <label>
                         <img src="/event.svg" alt="" />
-
-                        <select name="" id="">
-                            <option value="all">All</option>
-                            <option value="men">Men</option>
-                            <option value="women">Women</option>
-                        </select>
+                        <input
+                            type="text"
+                            value={input.interestString}
+                            onChange={(e) => setInput((prev) => ({ ...prev, interestString: e.target.value }))}
+                        />
                     </label>
                 </div>
-
                 {/* State */}
                 <div className={styles.group}>
                     <span>State</span>
@@ -240,11 +302,16 @@ function Profilesetup({ data }) {
                     </label>
                 </div>
 
+                {/*interestArray  */}
+                <div className={styles.interestArray}>
+                    {input.interestString !== "" && input.interestString.split(" ").map((p) => <p>{p}</p>)}
+
+                    {input.interestString === "" && <h4>You have no interest yet</h4>}
+                </div>
                 <h6 className={styles.changePassword} onClick={() => setModal(true)}>
                     Click here to Password
                 </h6>
             </div>
-
             <div className={styles.groupButton}>
                 <button className={styles.continue} onClick={(e) => submit(e)}>
                     {!loading && "Update"}
@@ -252,6 +319,7 @@ function Profilesetup({ data }) {
                 </button>
             </div>
 
+            {/**Change password Pop up modal */}
             <div style={{ display: modal ? "flex" : "none" }} className={styles.modal}>
                 <div
                     className={
@@ -260,10 +328,11 @@ function Profilesetup({ data }) {
                 >
                     <h3>Change Password</h3>
 
-                    <form onSubmit={(e) => changePasswordSubmit(e)}>
+                    <form onSubmit={changePasswordSubmit}>
                         <div>
                             <label>Current Password</label>
                             <input
+                                name="changePassword"
                                 required
                                 type="password"
                                 value={input.password}
@@ -271,10 +340,10 @@ function Profilesetup({ data }) {
                                 placeholder="*****"
                             />
                         </div>
-
                         <div>
                             <label>New Password</label>
                             <input
+                                name="changePassword"
                                 required
                                 type="password"
                                 value={input.newPassword}
@@ -282,10 +351,10 @@ function Profilesetup({ data }) {
                                 placeholder="*****"
                             />
                         </div>
-
                         <div>
                             <label>Confirm New Password</label>
                             <input
+                                name="changePassword"
                                 required
                                 type="password"
                                 value={input.confirmPassword}
@@ -293,30 +362,31 @@ function Profilesetup({ data }) {
                                 placeholder="*****"
                             />
                         </div>
-
+                        // Change password Buttons
                         <div>
                             <div>
                                 <button className={styles.continue} onClick={openModal()}>
                                     {!passwordLoading && "Change Password"}
-                                    {passwordLoading && <ClapSpinner />}
+                                    {passwordLoading && "loading. . ."}
                                 </button>
                             </div>
                             <div>
-                                <button
-                                    className={styles.continue}
-                                    onClick={() => {
-                                        setModal(false);
-                                        clearPasswordInput();
-                                    }}
-                                >
-                                    Cancel
-                                </button>
+                                {!passwordLoading && (
+                                    <button
+                                        className={styles.continue}
+                                        onClick={() => {
+                                            setModal(false);
+                                            clearPasswordInput();
+                                        }}
+                                    >
+                                        Cancel
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
             <ToastContainer />
         </div>
     );

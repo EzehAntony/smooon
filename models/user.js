@@ -10,7 +10,7 @@ const userSchema = new Schema(
         picture: { type: String, default: "" },
         bio: { type: String, default: "Hello everyone, I'm new here and I hope to meet someone good! " },
         education: { type: String, default: "" },
-        interest: { type: Array },
+        interest: { type: "" },
         state: { type: String, required: true },
         gender: { type: String, required: true },
         liked: { type: Array },
