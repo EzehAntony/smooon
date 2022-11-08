@@ -3,7 +3,7 @@ import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Card({ name, state, bio, age, id, picture, gender }) {
+function Card({ name, state, bio, age, id, interest, picture, gender }) {
     const [liked, setLiked] = useState(false);
     const [loggedUser, setLoggedUser] = useState({});
 
@@ -95,11 +95,17 @@ function Card({ name, state, bio, age, id, picture, gender }) {
                             <h5 className={style.gender}> {gender === "m" ? "Male" : "Female"}</h5>
                         </div>
                         <div className={style.group}>
+                            <img src="/event.svg" alt="" />
                             <h5 className={style.age}>
                                 Age: <span> {2022 - age.split("-")[0]}</span>
                             </h5>
                         </div>
-
+                        <div className={style.group}>
+                            <img src="/event.svg" alt="" />
+                            <h5 className={style.age}>
+                                {interest !== "" && interest.split(" ").map((p, i) => <p key={i}>{p}</p>)}
+                            </h5>
+                        </div>
                     </div>
                 </div>
             </div>

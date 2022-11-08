@@ -38,6 +38,7 @@ function Home({ data }) {
                                 id={d._id}
                                 bio={d.bio}
                                 picture={d.picture}
+                                interest={d.interest}
                                 name={d.username}
                                 state={d.state}
                                 age={d.dob}

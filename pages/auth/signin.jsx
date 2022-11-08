@@ -47,19 +47,20 @@ const Signin = () => {
                     setLoading(false);
                 })
                 .catch((error) => {
+                    setLoading(false);
+
                     var e;
 
                     if (error.response.status === 500) {
                         e = "Network Error";
                     } else {
-                        e = res.response.data;
+                        e = error.response.data;
                     }
                     toast(`${e}`, {
                         type: "error",
                         autoClose: 2000,
                         hideProgressBar: true,
                     });
-                    setLoading(false);
                 });
         } else {
             toast(`Username can not have white spaces`, {
@@ -80,20 +81,19 @@ const Signin = () => {
                     <input
                         type="text"
                         value={input.username.toLowerCase()}
-                        required
-                        autoComplete="off"
+                        required={true}
+                        autoComplete={"off"}
                         onChange={(e) => setInput((prev) => ({ ...prev, username: e.target.value }))}
                         placeholder="Enter your username"
                         name="username"
                     />
 
                     <input
-                        required
+                        required={true}
                         type="password"
                         name="password"
                         placeholder="********"
                         value={input.password.toLowerCase()}
-                        input
                         onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value }))}
                     />
                     <p
@@ -108,7 +108,7 @@ const Signin = () => {
 
                     <button className={styles.submitBtn} name="input">
                         {!loading && "Signin"}
-                        <ClapSpinner loading={loading} frontColor="#fff" size="18" />
+                        <ClapSpinner loading={loading} frontColor="#fff" size={18} />
                     </button>
                 </form>
             </div>

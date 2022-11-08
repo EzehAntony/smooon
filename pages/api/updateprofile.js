@@ -22,6 +22,7 @@ export default async function handler(req, res) {
                                     gender: gender,
                                     state: state,
                                     picture: picture,
+                                    interest: interest,
                                 },
                             }
                         );

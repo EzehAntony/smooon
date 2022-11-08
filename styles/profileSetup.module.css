@@ -166,7 +166,7 @@
     border: 0;
     resize: none;
     outline: none;
-    background-color: #0000002d;
+    background-color: #00000021;
     font-weight: 700;
     border-radius: 10px;
 }
@@ -230,7 +230,7 @@
 }
 
 .interestArray {
-    background-color: #0000002d;
+    background-color: #00000021;
     width: 100%;
     border-radius: 10px;
     padding: 10px;
@@ -238,6 +238,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     min-height: 50px;
+    margin: 20px 0;
 }
 
 .interestArray p {

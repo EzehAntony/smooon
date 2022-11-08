@@ -21,7 +21,7 @@ function Profilesetup({ data }) {
         password: "",
         newPassword: "",
         confirmPassword: "",
-        interestString: "",
+        interestString: data.interest,
         interestArray: [],
     });
 
@@ -66,6 +66,7 @@ function Profilesetup({ data }) {
                     picture: input.picture,
                     password: input.password,
                     confirmPassword: "",
+                    interest: input.interestString,
                 },
             })
                 .then((res) => {
@@ -118,6 +119,7 @@ function Profilesetup({ data }) {
                                 gender: input.gender,
                                 dob: input.dob,
                                 picture: res.data.url,
+                                interest: input.interestString,
                             },
                         })
                             .then((res) => {
@@ -224,6 +226,7 @@ function Profilesetup({ data }) {
                 <img src="/add.svg" alt="" onClick={profileImg()} />
                 <input
                     type="file"
+                    accept="image/x-png,image/gif,image/jpeg"
                     onChange={(e) => setInput((prev) => ({ ...prev, newPicture: e.target.files[0] }))}
                     name=""
                     id="file"
@@ -283,6 +286,7 @@ function Profilesetup({ data }) {
                     <label>
                         <img src="/event.svg" alt="" />
                         <input
+                            maxLength={25}
                             type="text"
                             value={input.interestString}
                             onChange={(e) => setInput((prev) => ({ ...prev, interestString: e.target.value }))}
@@ -304,7 +308,7 @@ function Profilesetup({ data }) {
 
                 {/*interestArray  */}
                 <div className={styles.interestArray}>
-                    {input.interestString !== "" && input.interestString.split(" ").map((p) => <p>{p}</p>)}
+                    {input.interestString !== "" && input.interestString.split(" ").map((p, i) => <p key={i}>{p}</p>)}
 
                     {input.interestString === "" && <h4>You have no interest yet</h4>}
                 </div>

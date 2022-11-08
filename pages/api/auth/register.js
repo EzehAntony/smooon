@@ -29,7 +29,7 @@ const handler = async (req, res) => {
                     return res.status(200).json(others);
                 }
 
-                res.status(500).json("This user already exits");
+                res.status(401).json("This user already exits");
             } catch (err) {
                 res.status(500).json(err);
             }

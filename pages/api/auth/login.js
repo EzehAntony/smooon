@@ -34,10 +34,10 @@ const handler = async (req, res) => {
 
                         res.status(200).json(others);
                     } else {
-                        res.status(500).json("incorrect password");
+                        res.status(401).json("incorrect password");
                     }
                 } else {
-                    res.status(500).json("User not found");
+                    res.status(401).json("User not found");
                 }
             } catch (err) {
                 res.status(500).json(err);

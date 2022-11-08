@@ -40,17 +40,12 @@ function Profile({ data }) {
 
                     <div className={style.likes}>
                         <img src="/rheart.svg" alt="" />
-                        {data.liked?.length < 100 ? `Likes: ${data.liked.length}` : `Likes: 100+`}
+                        {data.liked?.length < 100 ? `Liked users: ${data.liked.length}` : `Likes: 100+`}
                     </div>
-                    <div className={style.education}>
-                        <img src="/education.svg" alt="" />
-                        {data.education !== "" ? data.education : "Not Set"}
-                    </div>
+
                     <div className={style.event}>
                         <img src="/event.svg" alt="" />
-                        {data.interest?.length < 1
-                            ? "Not set"
-                            : data.interest?.map((i, index) => <p key={index}>{i}</p>)}
+                        {data.interest !== "" && data.interest.split(" ").map((p, i) => <p key={i}>{p}</p>)}
                     </div>
                 </div>
 
