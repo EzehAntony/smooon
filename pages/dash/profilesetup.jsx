@@ -313,7 +313,7 @@ function Profilesetup({ data }) {
                     {input.interestString === "" && <h4>You have no interest yet</h4>}
                 </div>
                 <h6 className={styles.changePassword} onClick={() => setModal(true)}>
-                    Click here to Password
+                    Click here to change Password
                 </h6>
             </div>
             <div className={styles.groupButton}>
@@ -366,7 +366,7 @@ function Profilesetup({ data }) {
                                 placeholder="*****"
                             />
                         </div>
-                        // Change password Buttons
+                        {/* // Change password Buttons */}
                         <div>
                             <div>
                                 <button className={styles.continue} onClick={openModal()}>
